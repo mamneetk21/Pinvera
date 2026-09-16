@@ -1,0 +1,1616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pinvera — Fashion, beauty and lifestyle finds for everyday</title>
+<meta name="description" content="Pinvera is a lifestyle discovery site helping women find affordable, stylish and genuinely useful products — fashion, beauty, college essentials and seasonal inspiration.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ============ tokens ============ */
+:root{
+  --paper:#FDFBF8;
+  --oat:#F3EDE5;
+  --sand:#E7DCCF;
+  --blush:#EEDCD8;
+  --rose:#A9767C;
+  --rose-deep:#8C5D64;
+  --ink:#2E2A28;
+  --ink-soft:#6B615C;
+  --line:#E2D8CD;
+  --card:#FFFFFF;
+  --shadow:0 1px 2px rgba(46,42,40,.04);
+  --r-lg:28px;
+  --r-md:18px;
+  --r-pill:999px;
+  --serif:"Bodoni Moda",Georgia,"Times New Roman",serif;
+  --sans:"Jost","Helvetica Neue",Arial,sans-serif;
+  --wrap:1180px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#191614; --oat:#221E1B; --sand:#2C2724; --blush:#332A29;
+    --rose:#D6A39F; --rose-deep:#E0B6B2; --ink:#F2ECE6; --ink-soft:#B7ABA3;
+    --line:#38312D; --card:#211D1A; --shadow:0 1px 2px rgba(0,0,0,.3);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#191614; --oat:#221E1B; --sand:#2C2724; --blush:#332A29;
+  --rose:#D6A39F; --rose-deep:#E0B6B2; --ink:#F2ECE6; --ink-soft:#B7ABA3;
+  --line:#38312D; --card:#211D1A; --shadow:0 1px 2px rgba(0,0,0,.3);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.7;
+  letter-spacing:.005em;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.01em;margin:0}
+h1{font-size:clamp(2.6rem,7vw,4.6rem);line-height:1.02}
+h2{font-size:clamp(1.8rem,3.6vw,2.6rem);line-height:1.15}
+h3{font-size:1.28rem;line-height:1.3}
+p{margin:0 0 1.15em}
+.wrap{width:min(100% - 44px,var(--wrap));margin-inline:auto}
+.narrow{width:min(100% - 44px,720px);margin-inline:auto}
+:focus-visible{outline:2px solid var(--rose);outline-offset:3px;border-radius:4px}
+
+/* ============ header ============ */
+.topbar{
+  position:sticky;top:0;z-index:50;
+  background:color-mix(in srgb,var(--paper) 88%,transparent);
+  backdrop-filter:saturate(140%) blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.topbar-in{display:flex;align-items:center;gap:20px;min-height:72px}
+.brand{
+  font-family:var(--serif);font-size:1.5rem;letter-spacing:.34em;
+  text-decoration:none;padding-right:4px;white-space:nowrap;
+}
+.brand span{letter-spacing:0;font-style:italic;color:var(--rose)}
+.nav{margin-left:auto;display:flex;gap:26px;align-items:center;flex-wrap:wrap}
+.nav a{
+  text-decoration:none;font-size:.92rem;color:var(--ink-soft);
+  padding:6px 0;border-bottom:1px solid transparent;transition:color .18s,border-color .18s;
+}
+.nav a:hover{color:var(--ink);border-color:var(--rose)}
+.menu-toggle,.menu-btn{display:none}
+
+/* ============ CSS-only page routing ============ */
+.page{display:none}
+.page:target{display:block}
+body:not(:has(.page:target)) #home{display:block}
+
+/* ============ hero ============ */
+.hero{
+  padding:clamp(56px,9vw,104px) 0 clamp(48px,7vw,84px);
+  background:
+    radial-gradient(60% 80% at 82% 18%,var(--blush) 0%,transparent 62%),
+    radial-gradient(55% 70% at 8% 88%,var(--oat) 0%,transparent 60%);
+}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,64px);align-items:center}
+.hero h1{margin-bottom:.22em}
+.hero .tagline{
+  font-family:var(--serif);font-style:italic;font-size:clamp(1.1rem,2.1vw,1.45rem);
+  color:var(--rose-deep);margin-bottom:.7em;
+}
+.hero p.lede{max-width:44ch;color:var(--ink-soft);font-size:1.05rem}
+.btn-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+.btn{
+  display:inline-block;text-decoration:none;font-size:.93rem;letter-spacing:.05em;
+  padding:13px 30px;border-radius:var(--r-pill);border:1px solid var(--ink);
+  background:var(--ink);color:var(--paper);transition:background .2s,color .2s,border-color .2s;
+}
+.btn:hover{background:var(--rose-deep);border-color:var(--rose-deep)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--rose);color:var(--rose-deep);background:transparent}
+.btn.small{padding:10px 24px;font-size:.87rem}
+
+/* hero collage */
+.collage{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(5,52px);gap:14px}
+.collage .tile{border-radius:var(--r-lg);box-shadow:var(--shadow)}
+.collage .t1{grid-column:1;grid-row:1/4}
+.collage .t2{grid-column:2;grid-row:1/3}
+.collage .t3{grid-column:2;grid-row:3/6}
+.collage .t4{grid-column:1;grid-row:4/6}
+
+/* duotone placeholder tiles — swap for photography later */
+.tile{position:relative;overflow:hidden;background:var(--sand)}
+.tile::after{
+  content:"Pinvera";position:absolute;right:12px;bottom:8px;
+  font-family:var(--serif);font-size:.62rem;letter-spacing:.3em;
+  color:rgba(255,255,255,.72);text-transform:uppercase;
+}
+.p1{background:linear-gradient(150deg,#EFE0D6 0%,#D9BDB2 100%)}
+.p2{background:linear-gradient(160deg,#E9E3D8 0%,#C8BCA9 100%)}
+.p3{background:linear-gradient(140deg,#F2E2E1 0%,#C9A0A3 100%)}
+.p4{background:linear-gradient(155deg,#E4E6DF 0%,#B4B9AC 100%)}
+.p5{background:linear-gradient(145deg,#F4EBE2 0%,#D3B79C 100%)}
+.p6{background:linear-gradient(165deg,#EDE1E9 0%,#B79EAE 100%)}
+.p7{background:linear-gradient(150deg,#E8DED2 0%,#BBA48C 100%)}
+.p8{background:linear-gradient(135deg,#F6EFE6 0%,#CBB6B0 100%)}
+
+/* ============ sections ============ */
+.section{padding:clamp(52px,7vw,88px) 0}
+.section.tint{background:var(--oat)}
+.sec-head{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  gap:20px;flex-wrap:wrap;margin-bottom:34px;
+}
+.sec-head p{margin:.5em 0 0;color:var(--ink-soft);max-width:56ch;font-size:.98rem}
+.sec-link{
+  text-decoration:none;font-size:.9rem;color:var(--rose-deep);
+  border-bottom:1px solid var(--rose);padding-bottom:3px;white-space:nowrap;
+}
+.sec-link:hover{color:var(--ink)}
+
+/* category cards */
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.cat{
+  text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;
+  transition:border-color .2s;
+}
+.cat:hover{border-color:var(--rose)}
+.cat .tile{height:170px}
+.cat .body{padding:20px 22px 24px}
+.cat h3{margin-bottom:.35em}
+.cat p{font-size:.92rem;color:var(--ink-soft);margin:0}
+
+/* masonry finds */
+.masonry{columns:4;column-gap:22px}
+@media (max-width:1000px){.masonry{columns:3}}
+@media (max-width:700px){.masonry{columns:2;column-gap:14px}}
+.find{
+  break-inside:avoid;margin-bottom:22px;background:var(--card);
+  border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;
+}
+.find .tile{width:100%}
+.find .h1{height:230px}.find .h2{height:170px}.find .h3{height:280px}.find .h4{height:200px}
+.find .body{padding:15px 17px 19px}
+.find h3{font-size:1.04rem;margin-bottom:.3em}
+.find p{font-size:.86rem;color:var(--ink-soft);margin:0 0 .9em;line-height:1.55}
+.kicker{
+  font-family:var(--serif);font-style:italic;font-size:.82rem;color:var(--rose-deep);
+  display:block;margin-bottom:.25em;
+}
+.shop{
+  display:inline-block;text-decoration:none;font-size:.82rem;letter-spacing:.04em;
+  padding:8px 18px;border-radius:var(--r-pill);border:1px solid var(--line);
+  color:var(--ink);transition:background .2s,color .2s,border-color .2s;
+}
+.shop:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+/* article cards */
+.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.posts.two{grid-template-columns:repeat(2,1fr)}
+.post{
+  text-decoration:none;display:flex;flex-direction:column;
+  background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);
+  overflow:hidden;transition:border-color .2s;
+}
+.post:hover{border-color:var(--rose)}
+.post .tile{height:220px}
+.post .body{padding:22px 24px 26px}
+.post h3{margin-bottom:.4em}
+.post p{font-size:.92rem;color:var(--ink-soft);margin:0}
+.meta{font-size:.78rem;letter-spacing:.14em;color:var(--ink-soft);text-transform:uppercase}
+
+/* editorial split */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(26px,5vw,60px);align-items:center}
+.split .tile{height:clamp(300px,42vw,440px);border-radius:var(--r-lg)}
+.list-check{list-style:none;padding:0;margin:0 0 26px}
+.list-check li{padding:13px 0;border-bottom:1px solid var(--line);font-size:.98rem}
+.list-check li strong{font-weight:400;font-family:var(--serif);font-size:1.08rem}
+.list-check li span{display:block;color:var(--ink-soft);font-size:.9rem}
+
+/* seasonal strip */
+.seasons{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.season{position:relative;border-radius:var(--r-lg);overflow:hidden;height:250px;text-decoration:none;display:block}
+.season .tile{position:absolute;inset:0;height:100%}
+.season .lab{
+  position:absolute;left:0;right:0;bottom:0;padding:18px 20px;color:#fff;
+  background:linear-gradient(to top,rgba(46,42,40,.6),transparent);
+}
+.season .lab h3{color:#fff;font-size:1.15rem}
+.season .lab span{font-size:.84rem;opacity:.9}
+
+/* newsletter + pinterest */
+.band{background:var(--blush);border-radius:var(--r-lg);padding:clamp(34px,5vw,58px);text-align:center}
+.band p{max-width:52ch;margin-inline:auto;color:var(--ink-soft)}
+.signup{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+.signup input{
+  font-family:var(--sans);font-size:.95rem;padding:13px 20px;min-width:min(100%,300px);
+  border-radius:var(--r-pill);border:1px solid var(--line);background:var(--paper);color:var(--ink);
+}
+.fineprint{font-size:.8rem;color:var(--ink-soft);margin-top:14px}
+.pin-row{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:30px}
+.pin-row .tile{height:150px;border-radius:var(--r-md)}
+
+/* ============ article layout ============ */
+.article-hero{padding:44px 0 0}
+.article-hero .tile{height:clamp(240px,40vw,460px);border-radius:var(--r-lg);margin-top:26px}
+.article-title{font-size:clamp(2rem,4.6vw,3.2rem);margin:.3em 0}
+.byline{font-size:.83rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.article-body{padding:44px 0 20px;font-size:1.06rem}
+.article-body p{max-width:70ch}
+.article-body h2{margin:1.9em 0 .5em}
+.article-body h3{margin:1.6em 0 .4em;font-size:1.32rem}
+.article-body ul{padding-left:20px;color:var(--ink-soft);max-width:68ch}
+.article-body li{margin-bottom:.5em}
+.intro{font-size:1.14rem;color:var(--ink-soft);font-family:var(--serif);line-height:1.6}
+.disclosure-note{
+  font-size:.85rem;color:var(--ink-soft);border-left:2px solid var(--rose);
+  padding:4px 0 4px 16px;margin:26px 0 34px;
+}
+.pick{
+  display:grid;grid-template-columns:200px 1fr;gap:26px;align-items:start;
+  padding:26px;border:1px solid var(--line);border-radius:var(--r-lg);
+  background:var(--card);margin:26px 0;
+}
+.pick .tile{height:170px;border-radius:var(--r-md)}
+.pick h3{margin-bottom:.3em}
+.pick p{font-size:.96rem;color:var(--ink-soft);margin-bottom:1em}
+.pick .why{font-size:.88rem;color:var(--ink);border-top:1px solid var(--line);padding-top:12px;margin-bottom:1.1em}
+.pull{
+  font-family:var(--serif);font-style:italic;font-size:1.3rem;line-height:1.5;
+  color:var(--rose-deep);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0;margin:36px 0;max-width:64ch;
+}
+
+/* static pages */
+.page-head{padding:clamp(46px,7vw,84px) 0 0;text-align:center}
+.page-head p{color:var(--ink-soft);max-width:58ch;margin-inline:auto;margin-top:.6em}
+.prose{padding:44px 0 20px}
+.prose h2{margin:1.8em 0 .5em;font-size:1.6rem}
+.prose p,.prose li{color:var(--ink-soft)}
+.prose li{margin-bottom:.45em}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.field{display:block;margin-bottom:18px}
+.field span{display:block;font-size:.85rem;margin-bottom:7px;color:var(--ink-soft)}
+.field input,.field textarea,.field select{
+  width:100%;font-family:var(--sans);font-size:.98rem;font-weight:300;
+  padding:12px 16px;border:1px solid var(--line);border-radius:var(--r-md);
+  background:var(--card);color:var(--ink);
+}
+.field textarea{min-height:150px;resize:vertical}
+.fact{border-top:1px solid var(--line);padding:16px 0}
+.fact strong{font-family:var(--serif);font-weight:400;display:block;font-size:1.1rem}
+.fact span{font-size:.92rem;color:var(--ink-soft)}
+
+/* footer */
+.footer{background:var(--oat);border-top:1px solid var(--line);padding:56px 0 34px;margin-top:20px}
+.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:34px}
+.foot-grid h4{font-size:1rem;margin-bottom:12px}
+.foot-grid ul{list-style:none;margin:0;padding:0}
+.foot-grid li{margin-bottom:9px}
+.foot-grid a{text-decoration:none;font-size:.92rem;color:var(--ink-soft)}
+.foot-grid a:hover{color:var(--rose-deep)}
+.foot-note{
+  margin-top:40px;padding-top:22px;border-top:1px solid var(--line);
+  font-size:.83rem;color:var(--ink-soft);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+}
+
+/* ============ responsive ============ */
+@media (max-width:1000px){
+  .cats{grid-template-columns:repeat(2,1fr)}
+  .posts,.posts.two{grid-template-columns:repeat(2,1fr)}
+  .seasons{grid-template-columns:repeat(2,1fr)}
+  .pin-row{grid-template-columns:repeat(3,1fr)}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){
+  body{font-size:16px}
+  .wrap,.narrow{width:min(100% - 32px,var(--wrap))}
+  .hero-grid,.split,.contact-grid{grid-template-columns:1fr}
+  .collage{grid-template-rows:repeat(5,46px)}
+  .posts,.posts.two{grid-template-columns:1fr}
+  .pick{grid-template-columns:1fr;gap:18px}
+  .pick .tile{height:190px}
+  .pin-row{grid-template-columns:repeat(2,1fr)}
+  .btn{padding:12px 26px}
+
+  /* mobile nav */
+  .menu-btn{
+    display:block;margin-left:auto;cursor:pointer;font-size:.9rem;
+    border:1px solid var(--line);border-radius:var(--r-pill);padding:8px 18px;color:var(--ink-soft);
+  }
+  .nav{
+    position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:flex-start;
+    gap:0;background:var(--paper);border-bottom:1px solid var(--line);
+    padding:0 22px;max-height:0;overflow:hidden;transition:max-height .28s ease,padding .28s ease;
+  }
+  .nav a{width:100%;padding:13px 0;border-bottom:1px solid var(--line);font-size:1rem}
+  .menu-toggle:checked ~ .nav{max-height:640px;padding:6px 22px 16px}
+  .topbar-in{position:relative}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="#home">PIN<span>vera</span></a>
+    <input class="menu-toggle" type="checkbox" id="menu" hidden>
+    <label class="menu-btn" for="menu">Menu</label>
+    <nav class="nav">
+      <a href="#home">Home</a>
+      <a href="#fashion">Fashion</a>
+      <a href="#beauty">Beauty</a>
+      <a href="#lifestyle">Lifestyle</a>
+      <a href="#seasonal">Seasonal Finds</a>
+      <a href="#articles">Articles</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ===================== HOME ===================== -->
+<section class="page" id="home">
+
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1>PINVERA</h1>
+        <p class="tagline">Discover cute finds. Build your perfect lifestyle.</p>
+        <p class="lede">Fashion, beauty and lifestyle finds curated to make everyday shopping easier.</p>
+        <div class="btn-row">
+          <a class="btn" href="#fashion">Explore finds</a>
+          <a class="btn ghost" href="#articles">Latest articles</a>
+        </div>
+      </div>
+      <div class="collage" aria-hidden="true">
+        <div class="tile p1 t1"></div>
+        <div class="tile p3 t2"></div>
+        <div class="tile p5 t3"></div>
+        <div class="tile p2 t4"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2>Start with a category</h2>
+          <p>Four places to browse, depending on whether you're rebuilding a wardrobe, a skincare shelf or a dorm room.</p>
+        </div>
+      </div>
+      <div class="cats">
+        <a class="cat" href="#fashion">
+          <div class="tile p1"></div>
+          <div class="body"><h3>Fashion</h3><p>Cute outfits, seasonal fashion, accessories and affordable fashion finds.</p></div>
+        </a>
+        <a class="cat" href="#beauty">
+          <div class="tile p3"></div>
+          <div class="body"><h3>Beauty</h3><p>Beauty essentials, skincare accessories, makeup finds and self-care products.</p></div>
+        </a>
+        <a class="cat" href="#lifestyle">
+          <div class="tile p2"></div>
+          <div class="body"><h3>Lifestyle</h3><p>College essentials, organization, room decor and useful everyday products.</p></div>
+        </a>
+        <a class="cat" href="#seasonal">
+          <div class="tile p5"></div>
+          <div class="body"><h3>Seasonal Finds</h3><p>Fall, winter, spring and summer inspiration, products and trends.</p></div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section tint">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2>Featured finds</h2>
+          <p>A running list of pieces we keep coming back to, with a note on who each one actually suits.</p>
+        </div>
+        <a class="sec-link" href="#articles">See all guides</a>
+      </div>
+      <div class="masonry">
+        <article class="find"><div class="tile p1 h1"></div><div class="body">
+          <span class="kicker">Wardrobe</span><h3>Ribbed knit midi dress</h3>
+          <p>Works with sneakers on campus and boots at dinner. Look for a heavier rib — thin ones cling in ways most people don't want.</p>
+          <a class="shop" href="#">Shop the find</a></div></article>
+        <article class="find"><div class="tile p3 h2"></div><div class="body">
+          <span class="kicker">Skincare</span><h3>Silk-blend pillowcase</h3>
+          <p>Less friction on hair overnight. A small change, but one of the few we've found genuinely noticeable within a week.</p>
+          <a class="shop" href="#">Shop the find</a></div></article>
+        <article class="find"><div class="tile p2 h3"></div><div class="body">
+          <span class="kicker">Dorm</span><h3>Stackable drawer organizers</h3>
+          <p>Measure your desk before ordering. Clear sides help more than you'd expect when everything lives in one small room.</p>
+          <a class="shop" href="#">Shop the find</a></div></article>
+        <article class="find"><div class="tile p6 h2"></div><div class="body">
+          <span class="kicker">Accessories</span><h3>Gold-tone layered necklace</h3>
+          <p>Pre-layered so the chains don't tangle. Check that it's tarnish-resistant if you'll wear it daily.</p>
+          <a class="shop" href="#">Shop the find</a></div></article>
+        <article class="find"><div class="tile p5 h4"></div><div class="body">
+          <span class="kicker">Fall</span><h3>Oversized scarf in oatmeal</h3>
+          <p>Big enough to double as a blanket on a cold lecture hall morning. Neutral shades stretch across more outfits.</p>
+          <a class="shop" href="#">Shop the find</a></div></article>
+        <article class="find"><div class="tile p4 h1"></div><div class="body">
+          <span class="kicker">Everyday</span><h3>Insulated 32oz tumbler</h3>
+          <p>Fits most car holders and backpack pockets. Worth choosing one with a straw lid and a sealed lid in the box.</p>
+          <a class="shop" href="#">Shop the find</a></div></article>
+        <article class="find"><div class="tile p8 h2"></div><div class="body">
+          <span class="kicker">Beauty</span><h3>Heatless curling set</h3>
+          <p>Better for hair than daily heat styling. Takes practice — expect two or three tries before it looks right.</p>
+          <a class="shop" href="#">Shop the find</a></div></article>
+        <article class="find"><div class="tile p7 h4"></div><div class="body">
+          <span class="kicker">Room</span><h3>Warm-toned clip lamp</h3>
+          <p>Clips to a bed frame or shelf when there's no space for a table lamp. Pick 2700K bulbs for a softer room.</p>
+          <a class="shop" href="#">Shop the find</a></div></article>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2>Latest articles</h2>
+          <p>Longer reads, written from experience rather than assembled from bestseller lists.</p>
+        </div>
+        <a class="sec-link" href="#articles">All articles</a>
+      </div>
+      <div class="posts">
+        <a class="post" href="#a-fall-outfits">
+          <div class="tile p1"></div>
+          <div class="body">
+            <span class="meta">Fashion</span>
+            <h3>10 cute fall outfit ideas for college girls</h3>
+            <p>Ten combinations built from about fifteen pieces, so the same wardrobe carries a full week.</p>
+          </div>
+        </a>
+        <a class="post" href="#a-amazon-fall">
+          <div class="tile p5"></div>
+          <div class="body">
+            <span class="meta">Fashion</span>
+            <h3>15 affordable Amazon fall fashion finds</h3>
+            <p>What to look for in the listings, and which categories are worth ordering online at all.</p>
+          </div>
+        </a>
+        <a class="post" href="#a-beauty-college">
+          <div class="tile p3"></div>
+          <div class="body">
+            <span class="meta">Beauty</span>
+            <h3>10 beauty essentials every college girl needs</h3>
+            <p>A short routine that survives shared bathrooms, early classes and limited counter space.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section tint">
+    <div class="wrap split">
+      <div>
+        <h2>Trending in fashion</h2>
+        <p style="color:var(--ink-soft)">What's actually moving this season, and the version of each trend that still looks right in a year.</p>
+        <ul class="list-check">
+          <li><strong>Barrel-leg denim</strong><span>Softer than a straight leg, easier to wear than a wide leg. Hem them — length makes or breaks the shape.</span></li>
+          <li><strong>Suede-look jackets</strong><span>Warm brown tones carry from September through the holidays. Faux versions have improved a lot.</span></li>
+          <li><strong>Ballet flats with structure</strong><span>Comfortable across campus if you size up half a size and add a cushioned insole.</span></li>
+          <li><strong>Quiet-gold jewelry</strong><span>Thin chains, small hoops, nothing that competes with the outfit.</span></li>
+        </ul>
+        <a class="btn ghost small" href="#fashion">Browse fashion</a>
+      </div>
+      <div class="tile p6" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="wrap split">
+      <div class="tile p3" aria-hidden="true"></div>
+      <div>
+        <h2>Beauty &amp; self-care</h2>
+        <p style="color:var(--ink-soft)">Skincare gets easier when the routine is short enough to repeat on a bad week. These are the categories worth spending on first.</p>
+        <ul class="list-check">
+          <li><strong>A gentle cleanser</strong><span>Non-stripping, fragrance-free if your skin reacts easily. This is the step most routines get wrong.</span></li>
+          <li><strong>Daily SPF you like wearing</strong><span>Texture matters more than the brand — you'll skip anything that pills under makeup.</span></li>
+          <li><strong>One active, introduced slowly</strong><span>Retinol or an exfoliating acid, two nights a week to start. Not both at once.</span></li>
+          <li><strong>Tools that stay clean</strong><span>Washable brushes, a clean towel, fresh pillowcases. Unglamorous, but it shows.</span></li>
+        </ul>
+        <a class="btn ghost small" href="#beauty">Browse beauty</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section tint">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2>College &amp; lifestyle essentials</h2>
+          <p>Dorm rooms reward anything that stacks, folds or hangs. These are the things students tell us they still use in second semester.</p>
+        </div>
+        <a class="sec-link" href="#lifestyle">Browse lifestyle</a>
+      </div>
+      <div class="masonry">
+        <article class="find"><div class="tile p2 h2"></div><div class="body">
+          <span class="kicker">Storage</span><h3>Under-bed rolling bins</h3>
+          <p>Check bed height first. Low frames need bins under six inches, which rules out most of the popular ones.</p>
+          <a class="shop" href="#">Shop the find</a></div></article>
+        <article class="find"><div class="tile p7 h1"></div><div class="body">
+          <span class="kicker">Study</span><h3>Foldable laptop stand</h3>
+          <p>Raises your screen to eye level, which makes long library sessions easier on your neck. Aluminum holds up better than plastic.</p>
+          <a class="shop" href="#">Shop the find</a></div></article>
+        <article class="find"><div class="tile p4 h2"></div><div class="body">
+          <span class="kicker">Laundry</span><h3>Collapsible hamper with straps</h3>
+          <p>Backpack straps matter if the machines are two floors down. Mesh panels keep it from smelling.</p>
+          <a class="shop" href="#">Shop the find</a></div></article>
+        <article class="find"><div class="tile p8 h3"></div><div class="body">
+          <span class="kicker">Decor</span><h3>Warm-white string lights</h3>
+          <p>Choose battery or USB — many dorms don't allow extension cords. Warm white reads cozier than cool white.</p>
+          <a class="shop" href="#">Shop the find</a></div></article>
+        <article class="find"><div class="tile p5 h2"></div><div class="body">
+          <span class="kicker">Desk</span><h3>Small cordless vacuum</h3>
+          <p>Handles crumbs and a rug in one room without storage headaches. Look for a washable filter.</p>
+          <a class="shop" href="#">Shop the find</a></div></article>
+        <article class="find"><div class="tile p1 h4"></div><div class="body">
+          <span class="kicker">Closet</span><h3>Velvet slim hangers</h3>
+          <p>They roughly double what fits on a standard dorm rod, and knitwear stops slipping off.</p>
+          <a class="shop" href="#">Shop the find</a></div></article>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2>Seasonal inspiration</h2>
+          <p>Each season gets its own edit — outfit ideas, home touches and the pieces worth buying before they sell out.</p>
+        </div>
+        <a class="sec-link" href="#seasonal">All seasons</a>
+      </div>
+      <div class="seasons">
+        <a class="season" href="#seasonal"><div class="tile p5"></div><div class="lab"><h3>Fall</h3><span>Layers, boots and pumpkin patch outfits</span></div></a>
+        <a class="season" href="#seasonal"><div class="tile p4"></div><div class="lab"><h3>Winter</h3><span>Coats, cozy nights and holiday gifting</span></div></a>
+        <a class="season" href="#seasonal"><div class="tile p6"></div><div class="lab"><h3>Spring</h3><span>Lighter knits, pastels and a clean reset</span></div></a>
+        <a class="season" href="#seasonal"><div class="tile p3"></div><div class="lab"><h3>Summer</h3><span>Linen, travel packing and sun care</span></div></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="wrap">
+      <div class="band">
+        <h2>The Pinvera letter</h2>
+        <p>One email a week: a few new finds, a seasonal outfit idea and whatever we've been testing. No daily sale alerts.</p>
+        <form class="signup" onsubmit="return false">
+          <label class="field" style="margin:0">
+            <span class="sr-only" style="position:absolute;left:-9999px">Email address</span>
+            <input type="email" placeholder="you@email.com" aria-label="Email address">
+          </label>
+          <button class="btn" type="submit">Subscribe</button>
+        </form>
+        <p class="fineprint">Unsubscribe any time. We don't sell or share your email address.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section tint">
+    <div class="wrap" style="text-align:center">
+      <h2>Follow Pinvera on Pinterest</h2>
+      <p style="color:var(--ink-soft);max-width:52ch;margin:.6em auto 0">Daily outfit boards, seasonal edits and room inspiration — saved and sorted so you can find them again.</p>
+      <div class="btn-row" style="justify-content:center">
+        <a class="btn" href="#">Follow on Pinterest</a>
+      </div>
+      <div class="pin-row" aria-hidden="true">
+        <div class="tile p1"></div><div class="tile p3"></div><div class="tile p5"></div><div class="tile p6"></div><div class="tile p2"></div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ===================== FASHION ===================== -->
+<section class="page" id="fashion">
+  <div class="page-head">
+    <div class="narrow">
+      <h1 style="font-size:clamp(2.2rem,5vw,3.4rem)">Fashion</h1>
+      <p>Outfit ideas and affordable pieces chosen for how often you'll actually wear them. We note fit, fabric and sizing quirks where they matter.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="wrap">
+      <div class="posts">
+        <a class="post" href="#a-fall-outfits"><div class="tile p1"></div><div class="body"><span class="meta">Outfits</span><h3>10 cute fall outfit ideas for college girls</h3><p>Ten looks from a fifteen-piece wardrobe, with swaps for warmer campuses.</p></div></a>
+        <a class="post" href="#a-amazon-fall"><div class="tile p5"></div><div class="body"><span class="meta">Shopping</span><h3>15 affordable Amazon fall fashion finds</h3><p>How to read listings, and which categories are safest to buy online.</p></div></a>
+        <a class="post" href="#a-pumpkin"><div class="tile p7"></div><div class="body"><span class="meta">Seasonal</span><h3>Cute pumpkin patch outfit ideas</h3><p>Photogenic and practical, for a field that's usually muddy.</p></div></a>
+      </div>
+    </div>
+  </div>
+  <div class="section tint">
+    <div class="wrap">
+      <div class="sec-head"><div><h2>Fashion finds</h2><p>Pieces we'd buy again, with the reason we'd buy them.</p></div></div>
+      <div class="masonry">
+        <article class="find"><div class="tile p1 h1"></div><div class="body"><span class="kicker">Denim</span><h3>Mid-rise barrel jeans</h3><p>Forgiving through the hip. Order your usual size and plan on a hem if you're under 5'5".</p><a class="shop" href="#">Shop the find</a></div></article>
+        <article class="find"><div class="tile p2 h2"></div><div class="body"><span class="kicker">Knitwear</span><h3>Crewneck cashmere-blend sweater</h3><p>A blend pills less than pure cashmere at this price. Cream and camel go furthest.</p><a class="shop" href="#">Shop the find</a></div></article>
+        <article class="find"><div class="tile p6 h3"></div><div class="body"><span class="kicker">Outerwear</span><h3>Faux suede shacket</h3><p>The layer for 55°F mornings. Check the lining weight before buying for a cold climate.</p><a class="shop" href="#">Shop the find</a></div></article>
+        <article class="find"><div class="tile p8 h2"></div><div class="body"><span class="kicker">Shoes</span><h3>Square-toe ankle boots</h3><p>A block heel under two inches is the version you'll wear to class.</p><a class="shop" href="#">Shop the find</a></div></article>
+        <article class="find"><div class="tile p3 h4"></div><div class="body"><span class="kicker">Bags</span><h3>Structured crossbody</h3><p>Fits a phone, keys and a small notebook. Adjustable straps make it work over a coat.</p><a class="shop" href="#">Shop the find</a></div></article>
+        <article class="find"><div class="tile p4 h1"></div><div class="body"><span class="kicker">Basics</span><h3>Ribbed long-sleeve tops</h3><p>Multipacks are the better value here. They layer under almost everything else on this page.</p><a class="shop" href="#">Shop the find</a></div></article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== BEAUTY ===================== -->
+<section class="page" id="beauty">
+  <div class="page-head">
+    <div class="narrow">
+      <h1 style="font-size:clamp(2.2rem,5vw,3.4rem)">Beauty</h1>
+      <p>Skincare, makeup and self-care picks with honest notes on what each one does — and what it can't do. We avoid before-and-after promises.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="wrap">
+      <div class="posts">
+        <a class="post" href="#a-beauty-college"><div class="tile p3"></div><div class="body"><span class="meta">Routine</span><h3>10 beauty essentials every college girl needs</h3><p>A short routine that holds up in a shared bathroom.</p></div></a>
+        <a class="post" href="#a-skincare-tools"><div class="tile p6"></div><div class="body"><span class="meta">Skincare</span><h3>10 useful skincare accessories worth buying</h3><p>The tools that support a routine, and the ones you can skip.</p></div></a>
+        <a class="post" href="#a-cozy"><div class="tile p8"></div><div class="body"><span class="meta">Self-care</span><h3>10 cozy essentials for fall</h3><p>Small comforts for darker evenings and colder rooms.</p></div></a>
+      </div>
+    </div>
+  </div>
+  <div class="section tint">
+    <div class="wrap">
+      <div class="sec-head"><div><h2>Beauty finds</h2><p>Patch-test new actives, and give anything new about four weeks before judging it.</p></div></div>
+      <div class="masonry">
+        <article class="find"><div class="tile p3 h2"></div><div class="body"><span class="kicker">Cleanse</span><h3>Cream cleanser for dry skin</h3><p>Useful when winter heating starts. If your skin feels tight after washing, that's the sign to switch.</p><a class="shop" href="#">Shop the find</a></div></article>
+        <article class="find"><div class="tile p6 h1"></div><div class="body"><span class="kicker">Protect</span><h3>Lightweight daily SPF</h3><p>A fluid texture sits better under makeup than thicker lotions. Reapply if you're outside for hours.</p><a class="shop" href="#">Shop the find</a></div></article>
+        <article class="find"><div class="tile p8 h3"></div><div class="body"><span class="kicker">Tools</span><h3>Facial steamer</h3><p>Pleasant, and it makes a mask feel like a routine. It won't shrink pores, despite the claims you'll see.</p><a class="shop" href="#">Shop the find</a></div></article>
+        <article class="find"><div class="tile p1 h2"></div><div class="body"><span class="kicker">Hair</span><h3>Microfiber hair towel</h3><p>Dries faster with less roughing up of the cuticle. Cheap, and one of the easiest swaps to make.</p><a class="shop" href="#">Shop the find</a></div></article>
+        <article class="find"><div class="tile p5 h4"></div><div class="body"><span class="kicker">Makeup</span><h3>Cream blush stick</h3><p>Easier to blend with fingers on a rushed morning than powder, and it travels without shattering.</p><a class="shop" href="#">Shop the find</a></div></article>
+        <article class="find"><div class="tile p2 h2"></div><div class="body"><span class="kicker">Body</span><h3>Fragrance-free body lotion</h3><p>Apply within a few minutes of showering, while skin is still damp. It makes a real difference.</p><a class="shop" href="#">Shop the find</a></div></article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== LIFESTYLE ===================== -->
+<section class="page" id="lifestyle">
+  <div class="page-head">
+    <div class="narrow">
+      <h1 style="font-size:clamp(2.2rem,5vw,3.4rem)">Lifestyle</h1>
+      <p>College essentials, organization and small-space decor. Most of this is chosen around one question: will it still be useful in March?</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="wrap">
+      <div class="posts">
+        <a class="post" href="#a-college-essentials"><div class="tile p2"></div><div class="body"><span class="meta">College</span><h3>15 Amazon college essentials you'll actually use</h3><p>Sorted by where they live: desk, closet, bathroom, bed.</p></div></a>
+        <a class="post" href="#a-dorm-organization"><div class="tile p7"></div><div class="body"><span class="meta">Organization</span><h3>10 cute dorm room organization finds</h3><p>Storage that works in a room you can't drill into.</p></div></a>
+        <a class="post" href="#a-cozy"><div class="tile p8"></div><div class="body"><span class="meta">Home</span><h3>10 cozy essentials for fall</h3><p>Lighting, textiles and small rituals for shorter days.</p></div></a>
+      </div>
+    </div>
+  </div>
+  <div class="section tint">
+    <div class="wrap">
+      <div class="sec-head"><div><h2>Lifestyle finds</h2><p>Measure your space before ordering anything on this list — it saves most of the returns.</p></div></div>
+      <div class="masonry">
+        <article class="find"><div class="tile p2 h1"></div><div class="body"><span class="kicker">Desk</span><h3>Monitor riser with drawer</h3><p>Reclaims the space under your screen for pens, chargers and sticky notes.</p><a class="shop" href="#">Shop the find</a></div></article>
+        <article class="find"><div class="tile p4 h2"></div><div class="body"><span class="kicker">Walls</span><h3>Removable adhesive hooks</h3><p>Check the weight rating and press for thirty seconds. Most failures come from rushing that step.</p><a class="shop" href="#">Shop the find</a></div></article>
+        <article class="find"><div class="tile p7 h3"></div><div class="body"><span class="kicker">Kitchen</span><h3>Two-cup electric kettle</h3><p>Allowed in more dorms than hot plates. Auto shut-off is usually a requirement — check your housing rules.</p><a class="shop" href="#">Shop the find</a></div></article>
+        <article class="find"><div class="tile p1 h2"></div><div class="body"><span class="kicker">Bed</span><h3>Bedside caddy</h3><p>Holds a phone, a book and a water bottle when there's no room for a nightstand.</p><a class="shop" href="#">Shop the find</a></div></article>
+        <article class="find"><div class="tile p5 h4"></div><div class="body"><span class="kicker">Decor</span><h3>Fluted ceramic vase</h3><p>Grocery-store flowers look considered in the right vase. A neutral glaze suits any room.</p><a class="shop" href="#">Shop the find</a></div></article>
+        <article class="find"><div class="tile p6 h2"></div><div class="body"><span class="kicker">Tech</span><h3>Bedside charging station</h3><p>One outlet, three devices. Useful when dorm outlets are behind the bed frame.</p><a class="shop" href="#">Shop the find</a></div></article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SEASONAL ===================== -->
+<section class="page" id="seasonal">
+  <div class="page-head">
+    <div class="narrow">
+      <h1 style="font-size:clamp(2.2rem,5vw,3.4rem)">Seasonal finds</h1>
+      <p>Four edits, updated as each season arrives. Fall is live now — winter goes up in November.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="wrap">
+      <div class="seasons">
+        <a class="season" href="#a-cozy"><div class="tile p5"></div><div class="lab"><h3>Fall</h3><span>Live now</span></div></a>
+        <a class="season" href="#seasonal"><div class="tile p4"></div><div class="lab"><h3>Winter</h3><span>Coming in November</span></div></a>
+        <a class="season" href="#seasonal"><div class="tile p6"></div><div class="lab"><h3>Spring</h3><span>Coming in March</span></div></a>
+        <a class="season" href="#seasonal"><div class="tile p3"></div><div class="lab"><h3>Summer</h3><span>Coming in May</span></div></a>
+      </div>
+    </div>
+  </div>
+  <div class="section tint">
+    <div class="wrap">
+      <div class="sec-head"><div><h2>The fall edit</h2><p>Transitional layers, warm neutrals and a few things that make a cold room feel better.</p></div></div>
+      <div class="posts">
+        <a class="post" href="#a-pumpkin"><div class="tile p7"></div><div class="body"><span class="meta">Outfits</span><h3>Cute pumpkin patch outfit ideas</h3><p>Warm enough for the morning, photogenic by afternoon.</p></div></a>
+        <a class="post" href="#a-cozy"><div class="tile p8"></div><div class="body"><span class="meta">Home</span><h3>10 cozy essentials for fall</h3><p>Blankets, lighting and warm drinks, chosen carefully.</p></div></a>
+        <a class="post" href="#a-amazon-fall"><div class="tile p5"></div><div class="body"><span class="meta">Shopping</span><h3>15 affordable Amazon fall fashion finds</h3><p>The fall pieces that are safe to order online.</p></div></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ARTICLES INDEX ===================== -->
+<section class="page" id="articles">
+  <div class="page-head">
+    <div class="narrow">
+      <h1 style="font-size:clamp(2.2rem,5vw,3.4rem)">Articles</h1>
+      <p>Guides, outfit ideas and shopping notes. Everything here is written by our editors — we tell you what we've used, what we've only researched, and where opinions differ.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="wrap">
+      <div class="posts">
+        <a class="post" href="#a-fall-outfits"><div class="tile p1"></div><div class="body"><span class="meta">Fashion</span><h3>10 cute fall outfit ideas for college girls</h3><p>Ten looks from a fifteen-piece wardrobe, with warm-weather swaps.</p></div></a>
+        <a class="post" href="#a-amazon-fall"><div class="tile p5"></div><div class="body"><span class="meta">Fashion</span><h3>15 affordable Amazon fall fashion finds</h3><p>Reading listings, judging fabric and avoiding returns.</p></div></a>
+        <a class="post" href="#a-pumpkin"><div class="tile p7"></div><div class="body"><span class="meta">Seasonal</span><h3>Cute pumpkin patch outfit ideas</h3><p>Five outfits for a muddy field and a cold morning.</p></div></a>
+        <a class="post" href="#a-cozy"><div class="tile p8"></div><div class="body"><span class="meta">Lifestyle</span><h3>10 cozy essentials for fall</h3><p>Warmth, light and texture — in that order.</p></div></a>
+        <a class="post" href="#a-beauty-college"><div class="tile p3"></div><div class="body"><span class="meta">Beauty</span><h3>10 beauty essentials every college girl needs</h3><p>The short version of a routine that actually gets done.</p></div></a>
+        <a class="post" href="#a-skincare-tools"><div class="tile p6"></div><div class="body"><span class="meta">Beauty</span><h3>10 useful skincare accessories worth buying</h3><p>Which tools support a routine, and which are decoration.</p></div></a>
+        <a class="post" href="#a-college-essentials"><div class="tile p2"></div><div class="body"><span class="meta">Lifestyle</span><h3>15 Amazon college essentials you'll actually use</h3><p>Sorted by where they live in a small room.</p></div></a>
+        <a class="post" href="#a-dorm-organization"><div class="tile p4"></div><div class="body"><span class="meta">Lifestyle</span><h3>10 cute dorm room organization finds</h3><p>Storage for rooms you can't modify.</p></div></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ARTICLE 1 ===================== -->
+<article class="page" id="a-fall-outfits">
+  <div class="article-hero">
+    <div class="narrow">
+      <span class="byline">Fashion · 8 min read · Updated September 2026</span>
+      <h1 class="article-title">10 cute fall outfit ideas for college girls</h1>
+    </div>
+    <div class="wrap"><div class="tile p1"></div></div>
+  </div>
+  <div class="article-body">
+    <div class="narrow">
+      <p class="intro">Most fall outfit round-ups quietly assume you own forty pieces. This one doesn't. Every look below is built from the same core wardrobe — roughly fifteen items — so the outfits repeat pieces on purpose.</p>
+      <p class="disclosure-note">Some links on Pinvera are affiliate links, which means we may earn a small commission if you buy through them. It never changes what we recommend or what you pay.</p>
+
+      <p>The difficulty with dressing for fall on a campus is that one day covers three temperatures. You leave for an 8 a.m. class in the cold, sit in an overheated lecture hall by ten, and walk home at four in the warmest part of the day. So the useful principle isn't "buy a fall wardrobe" — it's "build outfits that come apart."</p>
+      <p>Each look here has a layer you can remove without the outfit falling apart underneath. That's the whole trick.</p>
+
+      <h2>The core pieces</h2>
+      <p>Before the outfits, here's what they're drawn from: two pairs of jeans, a pair of black trousers, three long-sleeve tops, two sweaters, a cardigan, a denim jacket, a shacket, a midi dress, sneakers, ankle boots, a scarf and a crossbody bag. If you have most of that, you can make all ten.</p>
+
+      <h2>1. Sweater, barrel jeans, white sneakers</h2>
+      <p>The baseline. A slightly cropped sweater balances a fuller jean, which keeps the proportions from reading shapeless. Cuff the jeans once if they hit awkwardly at the ankle — that gap between hem and shoe is what makes an outfit look borrowed rather than chosen.</p>
+
+      <h3>What we'd wear it with</h3>
+      <div class="pick">
+        <div class="tile p1"></div>
+        <div>
+          <h3>Cream crewneck sweater</h3>
+          <p>A cotton-blend crewneck in cream or oatmeal is the most repeatable piece in a fall wardrobe. It works under a jacket, over a collared shirt, and on its own in a warm classroom.</p>
+          <div class="why">Sizing note: these often run boxy. If you're between sizes, the smaller one usually holds its shape better after washing.</div>
+          <a class="shop" href="#">Shop the find</a>
+        </div>
+      </div>
+
+      <h2>2. Midi dress with a denim jacket</h2>
+      <p>A ribbed knit midi does a lot of work in September and October. With a denim jacket and sneakers it reads casual enough for class; swap to boots and a scarf and it holds up for dinner. The jacket is the removable layer.</p>
+
+      <h2>3. Black trousers, tucked long-sleeve, loafers</h2>
+      <p>This is the outfit for presentation days, career fairs and anything where you want to look put together without wearing a suit. Tuck the top properly — a full tuck with a belt, not a half-tuck — and the whole thing shifts register.</p>
+
+      <div class="pull">The outfits that get worn most aren't the most interesting ones. They're the ones that take four minutes to assemble before a 9 a.m. class.</div>
+
+      <h2>4. Shacket over a ribbed tank</h2>
+      <p>Faux suede and heavy flannel shackets both work. Wear it open, with the tank doing the fitted part of the silhouette. This is the best option for a genuinely warm fall — a Texas or Florida October, where a real coat is unwearable until December.</p>
+
+      <div class="pick">
+        <div class="tile p5"></div>
+        <div>
+          <h3>Faux suede shacket in warm brown</h3>
+          <p>Warm brown is the most flexible shade this season — it sits well with cream, black, denim and olive. Look for a version with a soft drape rather than a stiff one; the stiff ones stand away from the body and look bulkier in photos.</p>
+          <div class="why">Worth knowing: faux suede usually can't be machine washed. Check the care label before buying if you're relying on dorm laundry.</div>
+          <a class="shop" href="#">Shop the find</a>
+        </div>
+      </div>
+
+      <h2>5. Cardigan over a collared shirt</h2>
+      <p>A thin cardigan with the collar of a shirt showing at the neck gives an outfit structure without adding real bulk. It's also one of the few combinations that looks intentional with leggings, if that's the day you're having.</p>
+
+      <h2>6. Denim-on-denim, different washes</h2>
+      <p>Keep the washes clearly different — a light jacket over dark jeans, or the reverse. Matching washes look like a set; contrasting ones look deliberate.</p>
+
+      <h2>7. Oversized scarf as the whole outfit</h2>
+      <p>Jeans, a plain long-sleeve and a large scarf in a strong texture. The scarf carries the look, which means everything under it can be simple. Useful on laundry days.</p>
+
+      <h2>8. Sweater dress with tall boots</h2>
+      <p>Tights underneath extend this into November in most of the country. If tights feel uncomfortable, fleece-lined ones are considerably warmer and less noticeable than they used to be.</p>
+
+      <h2>9. Quarter-zip with straight jeans</h2>
+      <p>The athletic-adjacent option that still looks considered. A cream or grey quarter-zip in a fine knit, not fleece, is the version that works off the field as well as on it.</p>
+
+      <h2>10. All neutrals, one texture change</h2>
+      <p>Cream sweater, camel trousers, brown boots — then one piece with visible texture, like a cable knit or a suede bag. Tonal outfits fall flat when everything is smooth. The texture is what keeps it from looking like a uniform.</p>
+
+      <h2>A note on buying for fall</h2>
+      <p>If you're adding pieces rather than working with what you have, buy the layers first: a jacket, a cardigan, a scarf. They change more outfits than a new top does. And give yourself a week between ordering and deciding — most of what gets returned was bought in the first hour of a sale.</p>
+    </div>
+  </div>
+  <div class="section tint">
+    <div class="wrap">
+      <div class="sec-head"><div><h2>Related articles</h2></div></div>
+      <div class="posts">
+        <a class="post" href="#a-amazon-fall"><div class="tile p5"></div><div class="body"><span class="meta">Fashion</span><h3>15 affordable Amazon fall fashion finds</h3><p>How to judge fabric and fit from a listing.</p></div></a>
+        <a class="post" href="#a-pumpkin"><div class="tile p7"></div><div class="body"><span class="meta">Seasonal</span><h3>Cute pumpkin patch outfit ideas</h3><p>Five looks for a cold, muddy morning.</p></div></a>
+        <a class="post" href="#a-cozy"><div class="tile p8"></div><div class="body"><span class="meta">Lifestyle</span><h3>10 cozy essentials for fall</h3><p>Small comforts for shorter days.</p></div></a>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ===================== ARTICLE 2 ===================== -->
+<article class="page" id="a-amazon-fall">
+  <div class="article-hero">
+    <div class="narrow">
+      <span class="byline">Fashion · 7 min read · Updated September 2026</span>
+      <h1 class="article-title">15 affordable Amazon fall fashion finds</h1>
+    </div>
+    <div class="wrap"><div class="tile p5"></div></div>
+  </div>
+  <div class="article-body">
+    <div class="narrow">
+      <p class="intro">Buying clothes online works well for some categories and badly for others. This guide covers the fall pieces that tend to arrive as expected — and how to read a listing before you order.</p>
+      <p class="disclosure-note">Some links on Pinvera are affiliate links. We may earn a small commission on purchases, at no extra cost to you.</p>
+
+      <h2>How to read a clothing listing</h2>
+      <p>Three things tell you most of what you need to know, and none of them are the photos.</p>
+      <ul>
+        <li><strong>Fabric composition.</strong> Anything above roughly 60% polyester in a sweater will pill. Cotton and viscose blends drape better and breathe in a warm room.</li>
+        <li><strong>The size chart in inches, not the letter.</strong> Letter sizes vary wildly between sellers. Measure a piece you already own and compare.</li>
+        <li><strong>Reviewer photos.</strong> Filter reviews by images. The difference between studio lighting and a phone camera in a bedroom is where most disappointment lives.</li>
+      </ul>
+
+      <div class="pull">If a listing has no fabric composition and no customer photos, treat it as unknown — not as a bargain.</div>
+
+      <h2>The categories worth ordering online</h2>
+      <p>Knitwear, scarves, jackets in a forgiving cut, tote bags and jewelry are all low-risk: they're either one-size or generously cut. Fitted trousers, blazers and boots are higher-risk, because half an inch matters and returns eat the savings in time.</p>
+
+      <h3>Layers</h3>
+      <div class="pick">
+        <div class="tile p2"></div>
+        <div>
+          <h3>Cable knit cardigan</h3>
+          <p>An open cardigan is the easiest layer to buy online — there's no closure to fit. A heavier gauge holds its shape through a semester better than a fine one.</p>
+          <div class="why">Check for: ribbed cuffs. They stop the sleeves sagging after a few wears.</div>
+          <a class="shop" href="#">Shop the find</a>
+        </div>
+      </div>
+      <div class="pick">
+        <div class="tile p4"></div>
+        <div>
+          <h3>Quilted vest</h3>
+          <p>Useful in the 50–60°F range when a coat is too much. Layers over a sweater and under a rain shell if the weather turns.</p>
+          <div class="why">Fit note: size up if you plan to wear it over a chunky knit. Most are cut close.</div>
+          <a class="shop" href="#">Shop the find</a>
+        </div>
+      </div>
+
+      <h3>Accessories</h3>
+      <div class="pick">
+        <div class="tile p7"></div>
+        <div>
+          <h3>Blanket scarf in a muted plaid</h3>
+          <p>Wide enough to wrap twice. Muted plaids in brown, cream and grey read more modern than bright tartans and go with more of a wardrobe.</p>
+          <div class="why">Acrylic is fine here — you're not wearing it against your neck all day, and it washes more easily than wool.</div>
+          <a class="shop" href="#">Shop the find</a>
+        </div>
+      </div>
+      <div class="pick">
+        <div class="tile p6"></div>
+        <div>
+          <h3>Small gold hoops</h3>
+          <p>Look for stainless steel or gold-filled rather than plated if you'll wear them daily. Plating wears through within months on earrings.</p>
+          <div class="why">If your ears react to jewelry, check the post material specifically — the hoop and the post are often different metals.</div>
+          <a class="shop" href="#">Shop the find</a>
+        </div>
+      </div>
+
+      <h2>The rest of the list</h2>
+      <ul>
+        <li>Ribbed long-sleeve multipack — the layering base for everything above</li>
+        <li>Fleece-lined tights — warmer than they look, worth it by November</li>
+        <li>Slouchy beanie in a neutral — rib knit holds shape better than a loose weave</li>
+        <li>Faux leather crossbody — check strap length is adjustable</li>
+        <li>Chunky loafers — order a half size up if you wear thick socks</li>
+        <li>Cream turtleneck — the piece that makes tonal outfits work</li>
+        <li>Wide-leg corduroys — a heavier wale looks more expensive than a fine one</li>
+        <li>Puffer headband — for cold walks when a hat flattens your hair</li>
+        <li>Crew socks in a ribbed cotton — visible above boots, so they count as part of the outfit</li>
+        <li>Oversized flannel — the most forgiving fit on this list</li>
+        <li>Belt with a simple gold buckle — the finishing piece for a full tuck</li>
+      </ul>
+
+      <h2>Before you check out</h2>
+      <p>Check the return window and whether returns are free for that specific seller — it varies item by item, even on the same site. And be careful with "was" prices on fast-moving listings; a struck-through price isn't always a price the item was recently sold at.</p>
+    </div>
+  </div>
+  <div class="section tint">
+    <div class="wrap">
+      <div class="sec-head"><div><h2>Related articles</h2></div></div>
+      <div class="posts">
+        <a class="post" href="#a-fall-outfits"><div class="tile p1"></div><div class="body"><span class="meta">Fashion</span><h3>10 cute fall outfit ideas for college girls</h3><p>Ten looks from one small wardrobe.</p></div></a>
+        <a class="post" href="#a-college-essentials"><div class="tile p2"></div><div class="body"><span class="meta">Lifestyle</span><h3>15 Amazon college essentials you'll actually use</h3><p>What survives past the first month.</p></div></a>
+        <a class="post" href="#a-pumpkin"><div class="tile p7"></div><div class="body"><span class="meta">Seasonal</span><h3>Cute pumpkin patch outfit ideas</h3><p>Warm, photogenic and mud-proof.</p></div></a>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ===================== ARTICLE 3 ===================== -->
+<article class="page" id="a-pumpkin">
+  <div class="article-hero">
+    <div class="narrow">
+      <span class="byline">Seasonal · 5 min read · Updated September 2026</span>
+      <h1 class="article-title">Cute pumpkin patch outfit ideas</h1>
+    </div>
+    <div class="wrap"><div class="tile p7"></div></div>
+  </div>
+  <div class="article-body">
+    <div class="narrow">
+      <p class="intro">A pumpkin patch is a field. It's usually colder than the forecast, often wet underfoot, and you'll be standing around for an hour. These five outfits account for that and still photograph well.</p>
+      <p class="disclosure-note">Some links on Pinvera are affiliate links. We may earn a small commission on purchases, at no extra cost to you.</p>
+
+      <h2>Start with the shoes</h2>
+      <p>This is the decision that ruins the day if you get it wrong. Suede boots and white sneakers both come back stained. Choose leather or rubber-soled boots you can wipe down, or older sneakers you don't mind about.</p>
+
+      <h2>1. Cream sweater, dark jeans, brown boots</h2>
+      <p>The simplest version, and the one that photographs best against orange. Cream reads clean in daylight and doesn't compete with the background. Add a scarf you can take off once the sun's up.</p>
+
+      <h2>2. Plaid shacket over a black tank</h2>
+      <p>Warm on arrival, easy to tie around your waist by noon. Plaid in muted tones photographs better than high-contrast checks, which can look busy in a field that's already visually loud.</p>
+
+      <div class="pull">Dress for standing in a cold field for an hour, not for the twenty seconds you'll spend in front of a camera.</div>
+
+      <h2>3. Denim jacket over a rust midi dress</h2>
+      <p>The most photogenic option, with a caveat: bring tights or leggings. Fields are windier than they look, and a midi does nothing for your legs at 48°F.</p>
+
+      <div class="pick">
+        <div class="tile p5"></div>
+        <div>
+          <h3>Rust or terracotta midi dress</h3>
+          <p>Warm earth tones sit naturally in a fall landscape without matching the pumpkins exactly. A long-sleeve version extends the season by several weeks.</p>
+          <div class="why">Pair with: opaque tights and flat boots. Heels sink in soft ground.</div>
+          <a class="shop" href="#">Shop the find</a>
+        </div>
+      </div>
+
+      <h2>4. Oversized knit, leggings, tall boots</h2>
+      <p>The comfortable choice. A sweater long enough to cover the hip makes leggings read as a deliberate outfit rather than a fallback.</p>
+
+      <h2>5. Overalls with a striped long-sleeve</h2>
+      <p>Genuinely practical — the bib keeps you warmer than jeans, and the pockets hold a phone while you're carrying a pumpkin. It also has the advantage of looking like you knew where you were going.</p>
+
+      <div class="pick">
+        <div class="tile p1"></div>
+        <div>
+          <h3>Cotton-canvas overalls</h3>
+          <p>A mid-weight canvas holds its shape; lighter chambray versions wrinkle in a way that shows in photos. Check the strap adjustment range if you're tall.</p>
+          <div class="why">Sizing: these run large by design. Order your usual size unless you plan to layer a thick sweater underneath.</div>
+          <a class="shop" href="#">Shop the find</a>
+        </div>
+      </div>
+
+      <h2>Small things that help</h2>
+      <ul>
+        <li>Go in the first two hours after opening — better light, fewer people, firmer ground.</li>
+        <li>Bring a tote. Most patches don't hand out bags, and pumpkins are awkward to carry.</li>
+        <li>Hair up if it's windy. It saves half your photos.</li>
+        <li>Keep one warm layer in the car for the walk back.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="section tint">
+    <div class="wrap">
+      <div class="sec-head"><div><h2>Related articles</h2></div></div>
+      <div class="posts">
+        <a class="post" href="#a-fall-outfits"><div class="tile p1"></div><div class="body"><span class="meta">Fashion</span><h3>10 cute fall outfit ideas for college girls</h3><p>Built from one small wardrobe.</p></div></a>
+        <a class="post" href="#a-cozy"><div class="tile p8"></div><div class="body"><span class="meta">Lifestyle</span><h3>10 cozy essentials for fall</h3><p>For the evening after.</p></div></a>
+        <a class="post" href="#a-amazon-fall"><div class="tile p5"></div><div class="body"><span class="meta">Fashion</span><h3>15 affordable Amazon fall fashion finds</h3><p>Where online shopping works.</p></div></a>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ===================== ARTICLE 4 ===================== -->
+<article class="page" id="a-cozy">
+  <div class="article-hero">
+    <div class="narrow">
+      <span class="byline">Lifestyle · 6 min read · Updated September 2026</span>
+      <h1 class="article-title">10 cozy essentials for fall</h1>
+    </div>
+    <div class="wrap"><div class="tile p8"></div></div>
+  </div>
+  <div class="article-body">
+    <div class="narrow">
+      <p class="intro">Cozy is mostly three things: warmth, low light and texture. Get those right and the room does the rest — no seasonal decor required.</p>
+      <p class="disclosure-note">Some links on Pinvera are affiliate links. We may earn a small commission on purchases, at no extra cost to you.</p>
+
+      <h2>Light first</h2>
+      <p>The single biggest change you can make to a room in October is turning off the overhead light. One bright ceiling fixture flattens everything; two or three small warm lamps at different heights do the opposite. If you're buying bulbs, 2700K is the warm end — 5000K is daylight, which is what most rooms come fitted with.</p>
+
+      <div class="pick">
+        <div class="tile p8"></div>
+        <div>
+          <h3>Small table lamp with a fabric shade</h3>
+          <p>A fabric shade diffuses light more softly than glass or metal. Placed low — on a desk or nightstand rather than a tall shelf — it changes the feel of a room more than anything else on this list.</p>
+          <div class="why">Bulb note: check whether it's included. Many aren't, and the included bulb is often cool white.</div>
+          <a class="shop" href="#">Shop the find</a>
+        </div>
+      </div>
+
+      <h2>Then texture</h2>
+      <p>Hard surfaces make a room feel colder than it is. A rug, a throw and a couple of cushions in different weaves do more than any amount of seasonal decoration.</p>
+
+      <div class="pick">
+        <div class="tile p2"></div>
+        <div>
+          <h3>Chunky knit throw</h3>
+          <p>Look for something around 50x60 inches — large enough to actually cover you, small enough to leave folded on a chair. Acrylic knits are warm and washable; wool is warmer and usually isn't.</p>
+          <div class="why">If you're in a warm climate, a waffle-weave cotton throw gives the same visual texture with less heat.</div>
+          <a class="shop" href="#">Shop the find</a>
+        </div>
+      </div>
+
+      <div class="pull">Warm light and one soft surface will do more for a room in October than a shelf of seasonal decorations.</div>
+
+      <h2>The rest of the list</h2>
+      <ul>
+        <li><strong>An electric kettle.</strong> The ritual matters as much as the tea. A small one heats in under two minutes.</li>
+        <li><strong>A large mug.</strong> Thick walls hold heat longer. Worth caring about if you drink slowly.</li>
+        <li><strong>Slippers with a real sole.</strong> Cold floors are half of why a room feels cold.</li>
+        <li><strong>Flannel sheets.</strong> The seasonal swap with the highest return. Wash before first use — they shed.</li>
+        <li><strong>A wax warmer or unscented candle.</strong> Check your housing rules before buying anything with an open flame.</li>
+        <li><strong>A door draft stopper.</strong> Unromantic, and remarkably effective in an old building.</li>
+        <li><strong>Warm-white string lights.</strong> Battery or USB if outlets are limited.</li>
+        <li><strong>A wide-mouth thermos.</strong> For coffee that survives a walk across campus.</li>
+      </ul>
+
+      <h2>What we'd skip</h2>
+      <p>Scented products in a small shared room are worth thinking twice about — what reads as cozy to you can be genuinely unpleasant for a roommate, and strong fragrance is a common headache trigger. If in doubt, ask first, or go unscented and let the lighting do the work.</p>
+    </div>
+  </div>
+  <div class="section tint">
+    <div class="wrap">
+      <div class="sec-head"><div><h2>Related articles</h2></div></div>
+      <div class="posts">
+        <a class="post" href="#a-dorm-organization"><div class="tile p4"></div><div class="body"><span class="meta">Lifestyle</span><h3>10 cute dorm room organization finds</h3><p>Storage for a room you can't modify.</p></div></a>
+        <a class="post" href="#a-college-essentials"><div class="tile p2"></div><div class="body"><span class="meta">Lifestyle</span><h3>15 Amazon college essentials you'll actually use</h3><p>Sorted by where they live.</p></div></a>
+        <a class="post" href="#a-skincare-tools"><div class="tile p6"></div><div class="body"><span class="meta">Beauty</span><h3>10 useful skincare accessories worth buying</h3><p>Tools that earn their shelf space.</p></div></a>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ===================== ARTICLE 5 ===================== -->
+<article class="page" id="a-beauty-college">
+  <div class="article-hero">
+    <div class="narrow">
+      <span class="byline">Beauty · 7 min read · Updated September 2026</span>
+      <h1 class="article-title">10 beauty essentials every college girl needs</h1>
+    </div>
+    <div class="wrap"><div class="tile p3"></div></div>
+  </div>
+  <div class="article-body">
+    <div class="narrow">
+      <p class="intro">A routine you can finish in five minutes, carried in one bag, that works in a shared bathroom. Anything longer than that tends not to survive midterms.</p>
+      <p class="disclosure-note">Some links on Pinvera are affiliate links. We may earn a small commission on purchases, at no extra cost to you.</p>
+
+      <h2>Build the routine around three steps</h2>
+      <p>Cleanse, moisturize, protect. Everything else is optional and can be added later once the base is consistent. Most people's skin does better with a short routine done every day than a long one done twice a week.</p>
+
+      <h3>1. A gentle cleanser</h3>
+      <div class="pick">
+        <div class="tile p3"></div>
+        <div>
+          <h3>Fragrance-free gel or cream cleanser</h3>
+          <p>Gel for oily or combination skin, cream for dry. If your face feels tight five minutes after washing, the cleanser is too stripping — that tightness isn't cleanliness.</p>
+          <div class="why">A pump bottle is easier to use one-handed in a shared bathroom than a squeeze tube.</div>
+          <a class="shop" href="#">Shop the find</a>
+        </div>
+      </div>
+
+      <h3>2. Moisturizer that matches the season</h3>
+      <p>Many people need a lighter gel in September and something richer by December. Heating dries out indoor air more than cold weather dries out skin.</p>
+
+      <h3>3. Daily SPF</h3>
+      <div class="pick">
+        <div class="tile p6"></div>
+        <div>
+          <h3>Lightweight SPF 30+ for face</h3>
+          <p>The best sunscreen is the one whose texture you don't mind. If it pills under makeup or leaves a white cast you'll skip it, and a skipped sunscreen protects nothing.</p>
+          <div class="why">Reapplication matters on long days outdoors. A stick or powder format makes that realistic over makeup.</div>
+          <a class="shop" href="#">Shop the find</a>
+        </div>
+      </div>
+
+      <div class="pull">Consistency beats complexity. A three-step routine done daily will serve you better than an eight-step routine you abandon in October.</div>
+
+      <h2>The makeup that earns its place</h2>
+      <ul>
+        <li><strong>Tinted moisturizer or skin tint.</strong> Evens things out without a full base. More forgiving than foundation in bad bathroom lighting.</li>
+        <li><strong>Cream blush.</strong> Blends with fingers, travels without breaking.</li>
+        <li><strong>Brow gel.</strong> The highest-impact thirty seconds in any routine.</li>
+        <li><strong>A single neutral eye palette.</strong> Four shades you'll use beats twelve you won't.</li>
+        <li><strong>Tinted lip balm.</strong> Does two jobs, which matters when you're getting ready in a hurry.</li>
+      </ul>
+
+      <h2>The practical pieces</h2>
+      <ul>
+        <li><strong>A shower caddy that drains.</strong> Mesh or perforated, or everything grows mildew by week three.</li>
+        <li><strong>A hanging toiletry bag.</strong> Hooks on a door when there's no counter space.</li>
+        <li><strong>Shower shoes.</strong> Non-negotiable in a shared bathroom.</li>
+        <li><strong>A microfiber hair towel.</strong> Faster drying, less breakage than a bath towel.</li>
+        <li><strong>Satin pillowcases.</strong> Less friction on hair and skin overnight.</li>
+      </ul>
+
+      <h2>A realistic note</h2>
+      <p>Skincare helps with texture, hydration and sun damage over time. It can't fix acne that's hormonal or medical — if breakouts are persistent, painful or leaving marks, a dermatologist will get you further than a new serum. Most campuses have a health center that can refer you, often at low or no cost.</p>
+    </div>
+  </div>
+  <div class="section tint">
+    <div class="wrap">
+      <div class="sec-head"><div><h2>Related articles</h2></div></div>
+      <div class="posts">
+        <a class="post" href="#a-skincare-tools"><div class="tile p6"></div><div class="body"><span class="meta">Beauty</span><h3>10 useful skincare accessories worth buying</h3><p>Which tools are worth the counter space.</p></div></a>
+        <a class="post" href="#a-college-essentials"><div class="tile p2"></div><div class="body"><span class="meta">Lifestyle</span><h3>15 Amazon college essentials you'll actually use</h3><p>Beyond the bathroom.</p></div></a>
+        <a class="post" href="#a-cozy"><div class="tile p8"></div><div class="body"><span class="meta">Lifestyle</span><h3>10 cozy essentials for fall</h3><p>For the end of a long week.</p></div></a>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ===================== ARTICLE 6 ===================== -->
+<article class="page" id="a-skincare-tools">
+  <div class="article-hero">
+    <div class="narrow">
+      <span class="byline">Beauty · 6 min read · Updated September 2026</span>
+      <h1 class="article-title">10 useful skincare accessories worth buying</h1>
+    </div>
+    <div class="wrap"><div class="tile p6"></div></div>
+  </div>
+  <div class="article-body">
+    <div class="narrow">
+      <p class="intro">Skincare tools sit on a spectrum from genuinely useful to purely pleasant. Both are fine — it's worth knowing which one you're buying.</p>
+      <p class="disclosure-note">Some links on Pinvera are affiliate links. We may earn a small commission on purchases, at no extra cost to you.</p>
+
+      <h2>The ones that do real work</h2>
+
+      <div class="pick">
+        <div class="tile p1"></div>
+        <div>
+          <h3>Silk or satin pillowcase</h3>
+          <p>Less friction than cotton, which means less overnight creasing and less hair breakage. It's one of the few accessories with an effect you'll notice within a week.</p>
+          <div class="why">Wash weekly regardless of material. A clean pillowcase matters more than an expensive one.</div>
+          <a class="shop" href="#">Shop the find</a>
+        </div>
+      </div>
+
+      <ul>
+        <li><strong>Reusable cotton rounds.</strong> Cheaper over a year than disposables, and softer on skin. Buy enough to go a week between washes.</li>
+        <li><strong>A soft headband.</strong> Keeps hair out of cleanser and cleanser out of hair. Terry or microfiber beats plastic.</li>
+        <li><strong>Small spatulas for jars.</strong> Keeps bacteria out of anything you dip into daily.</li>
+        <li><strong>A dedicated face towel.</strong> Not the one that's been hanging in a shared bathroom all week.</li>
+      </ul>
+
+      <h2>The ones that are mostly pleasant</h2>
+      <p>These are worth buying if you enjoy them — a routine you look forward to is a routine you keep. Just don't expect structural change.</p>
+
+      <div class="pick">
+        <div class="tile p8"></div>
+        <div>
+          <h3>Facial roller or gua sha stone</h3>
+          <p>Cold stone feels good on puffy morning skin and can temporarily reduce the appearance of swelling. It won't change facial structure, contrary to a lot of what's claimed online.</p>
+          <div class="why">Use with a facial oil or it drags. Clean it after each use.</div>
+          <a class="shop" href="#">Shop the find</a>
+        </div>
+      </div>
+
+      <ul>
+        <li><strong>Facial steamer.</strong> Pleasant, makes masks feel like an occasion. Doesn't shrink pores — pore size is largely genetic.</li>
+        <li><strong>Sheet masks.</strong> A hydration boost that lasts a day or two. Good before an event, not a routine replacement.</li>
+        <li><strong>Mini fridge for skincare.</strong> Pure enjoyment, with one exception: some vitamin C formulas stay stable longer when cool.</li>
+        <li><strong>LED mask.</strong> There's real research behind red light for some concerns, but at-home devices are far weaker than in-office ones. Manage expectations, and only buy from sellers who publish specifications.</li>
+      </ul>
+
+      <div class="pull">A tool that makes you look forward to washing your face is doing something useful, even if the effect isn't on your skin.</div>
+
+      <h2>What to keep clean</h2>
+      <p>Anything that touches your face regularly needs washing: makeup brushes weekly, sponges after every few uses, rollers and stones after each use, pillowcases weekly. This is unglamorous and it's also the highest-impact habit on this page.</p>
+
+      <h2>When a tool isn't the answer</h2>
+      <p>If you're dealing with persistent irritation, cystic acne or a sudden change in your skin, no accessory will address it. That's a conversation for a dermatologist or your campus health center.</p>
+    </div>
+  </div>
+  <div class="section tint">
+    <div class="wrap">
+      <div class="sec-head"><div><h2>Related articles</h2></div></div>
+      <div class="posts">
+        <a class="post" href="#a-beauty-college"><div class="tile p3"></div><div class="body"><span class="meta">Beauty</span><h3>10 beauty essentials every college girl needs</h3><p>The routine these tools support.</p></div></a>
+        <a class="post" href="#a-cozy"><div class="tile p8"></div><div class="body"><span class="meta">Lifestyle</span><h3>10 cozy essentials for fall</h3><p>Warmth, light and texture.</p></div></a>
+        <a class="post" href="#a-dorm-organization"><div class="tile p4"></div><div class="body"><span class="meta">Lifestyle</span><h3>10 cute dorm room organization finds</h3><p>Somewhere to put all of it.</p></div></a>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ===================== ARTICLE 7 ===================== -->
+<article class="page" id="a-college-essentials">
+  <div class="article-hero">
+    <div class="narrow">
+      <span class="byline">Lifestyle · 8 min read · Updated September 2026</span>
+      <h1 class="article-title">15 Amazon college essentials you'll actually use</h1>
+    </div>
+    <div class="wrap"><div class="tile p2"></div></div>
+  </div>
+  <div class="article-body">
+    <div class="narrow">
+      <p class="intro">Move-in lists tend to be long and optimistic. This one is shorter, sorted by where things live, and built around what students tell us they were still using in February.</p>
+      <p class="disclosure-note">Some links on Pinvera are affiliate links. We may earn a small commission on purchases, at no extra cost to you.</p>
+
+      <h2>Before you buy anything</h2>
+      <p>Two things save more money than any deal. First, check your housing office's list of prohibited items — kettles, candles, extension cords and string lights all appear on some school's list. Second, message your roommate. Two mini fridges and no microwave is the classic first-week mistake.</p>
+
+      <h2>At the desk</h2>
+      <div class="pick">
+        <div class="tile p7"></div>
+        <div>
+          <h3>Foldable laptop stand</h3>
+          <p>Raises your screen toward eye level, which makes three-hour study sessions noticeably less uncomfortable. Folding flat matters — dorm desks have no spare space.</p>
+          <div class="why">Pair with a cheap external keyboard, or the raised screen just moves the strain to your wrists.</div>
+          <a class="shop" href="#">Shop the find</a>
+        </div>
+      </div>
+      <ul>
+        <li><strong>Desk lamp with adjustable warmth.</strong> Cool light for studying, warm for evenings.</li>
+        <li><strong>Power strip with surge protection.</strong> Check it's allowed; many schools ban daisy-chained extension cords specifically.</li>
+        <li><strong>Drawer organizer trays.</strong> Measure the drawer first. This is the most common return on the list.</li>
+      </ul>
+
+      <h2>In the closet</h2>
+      <ul>
+        <li><strong>Velvet slim hangers.</strong> Roughly double your rod capacity.</li>
+        <li><strong>Over-the-door shoe organizer.</strong> Works for shoes, but works better for snacks, chargers and toiletries.</li>
+        <li><strong>Under-bed storage bins.</strong> Measure your bed's clearance before ordering — this varies enormously between dorms.</li>
+        <li><strong>Vacuum storage bags.</strong> For off-season clothing, if you have a vacuum to use.</li>
+      </ul>
+
+      <div class="pull">Measure twice, order once. Almost every dorm shopping regret comes down to something that didn't fit the space.</div>
+
+      <h2>Bathroom and laundry</h2>
+      <div class="pick">
+        <div class="tile p4"></div>
+        <div>
+          <h3>Backpack-style laundry hamper</h3>
+          <p>If the machines are in a basement two floors down, straps change the experience considerably. Collapsible versions store flat when empty.</p>
+          <div class="why">Mesh side panels prevent the damp-laundry smell that builds in solid-sided hampers.</div>
+          <a class="shop" href="#">Shop the find</a>
+        </div>
+      </div>
+      <ul>
+        <li><strong>Draining shower caddy.</strong> Solid-bottomed ones grow mildew fast.</li>
+        <li><strong>Shower shoes.</strong> Genuinely non-negotiable.</li>
+        <li><strong>Mesh delicates bags.</strong> Extend the life of anything knit going through communal machines.</li>
+      </ul>
+
+      <h2>Around the room</h2>
+      <ul>
+        <li><strong>Small cordless vacuum.</strong> One room, some crumbs, no storage closet. This is the right size of tool.</li>
+        <li><strong>Removable adhesive hooks.</strong> Check weight ratings, and read the removal instructions before you need them.</li>
+        <li><strong>A door mirror.</strong> Full-length, mounted rather than leaning, so it can't fall.</li>
+        <li><strong>A fan.</strong> Many dorms have no air conditioning in September, and that first month is warmer than anyone expects.</li>
+      </ul>
+
+      <h2>What you can wait on</h2>
+      <p>Decor, a printer, a second monitor and most kitchen equipment can all wait until you've lived in the room for two weeks. You'll buy better versions once you know the space — and a surprising number of things turn out to be shared, borrowed or already in the building.</p>
+    </div>
+  </div>
+  <div class="section tint">
+    <div class="wrap">
+      <div class="sec-head"><div><h2>Related articles</h2></div></div>
+      <div class="posts">
+        <a class="post" href="#a-dorm-organization"><div class="tile p4"></div><div class="body"><span class="meta">Lifestyle</span><h3>10 cute dorm room organization finds</h3><p>Storage that looks good too.</p></div></a>
+        <a class="post" href="#a-beauty-college"><div class="tile p3"></div><div class="body"><span class="meta">Beauty</span><h3>10 beauty essentials every college girl needs</h3><p>The shared-bathroom routine.</p></div></a>
+        <a class="post" href="#a-fall-outfits"><div class="tile p1"></div><div class="body"><span class="meta">Fashion</span><h3>10 cute fall outfit ideas for college girls</h3><p>What to pack for the semester.</p></div></a>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ===================== ARTICLE 8 ===================== -->
+<article class="page" id="a-dorm-organization">
+  <div class="article-hero">
+    <div class="narrow">
+      <span class="byline">Lifestyle · 6 min read · Updated September 2026</span>
+      <h1 class="article-title">10 cute dorm room organization finds</h1>
+    </div>
+    <div class="wrap"><div class="tile p4"></div></div>
+  </div>
+  <div class="article-body">
+    <div class="narrow">
+      <p class="intro">Dorm storage has two constraints: you can't modify the room, and there's less floor space than you think. Everything here works within both.</p>
+      <p class="disclosure-note">Some links on Pinvera are affiliate links. We may earn a small commission on purchases, at no extra cost to you.</p>
+
+      <h2>Use the vertical space</h2>
+      <p>Floor space is finished on day one. Walls, doors and the area under the bed are where the remaining room is. Since you usually can't drill, the whole game is hooks, tension rods and things that hang.</p>
+
+      <div class="pick">
+        <div class="tile p2"></div>
+        <div>
+          <h3>Over-the-door organizer with clear pockets</h3>
+          <p>Clear pockets beat fabric ones because you can see what's in them, which is the difference between using a system and forgetting it exists. Works for toiletries, snacks and cables as easily as shoes.</p>
+          <div class="why">Check your door thickness — some hooks don't clear heavier fire doors, which are standard in a lot of dorms.</div>
+          <a class="shop" href="#">Shop the find</a>
+        </div>
+      </div>
+
+      <ul>
+        <li><strong>Tension rod under a shelf.</strong> Instant hanging space for small items or a short curtain to hide storage.</li>
+        <li><strong>Adhesive hooks along the closet wall.</strong> Bags, hats, a robe. Press and wait before hanging anything.</li>
+        <li><strong>Hanging closet shelves.</strong> Turns a tall empty rod space into five usable shelves.</li>
+      </ul>
+
+      <h2>Under the bed</h2>
+      <div class="pick">
+        <div class="tile p7"></div>
+        <div>
+          <h3>Rolling under-bed bins with lids</h3>
+          <p>Lids matter more than they seem — under a bed is where dust collects. Wheels mean you can reach the back without moving the bed.</p>
+          <div class="why">Measure the clearance first. Lofted beds take deep bins; low frames need under six inches, which is a much smaller selection.</div>
+          <a class="shop" href="#">Shop the find</a>
+        </div>
+      </div>
+      <ul>
+        <li><strong>Bed risers with built-in outlets.</strong> Add height and solve the "outlet is behind the frame" problem at once. Confirm your school allows them.</li>
+        <li><strong>A bed skirt or valance.</strong> Hides storage without adding any.</li>
+      </ul>
+
+      <div class="pull">The best storage in a dorm is whatever you can see into. Anything opaque and out of reach becomes a place things go to be forgotten.</div>
+
+      <h2>On the desk</h2>
+      <ul>
+        <li><strong>Stackable acrylic drawers.</strong> Clear, so nothing disappears. Stack to the height of your shelf, not higher.</li>
+        <li><strong>A pen cup with dividers.</strong> Small, but it keeps a desk from accumulating a pile.</li>
+        <li><strong>Cable clips along the desk edge.</strong> Chargers stop sliding to the floor, which is where they get stepped on.</li>
+      </ul>
+
+      <h2>Making it look intentional</h2>
+      <p>Organization reads as decor when the containers match. Choosing one material and one color family — clear acrylic with natural woven baskets, say, or all white — makes a room look considered even when it's full. Mixed colors and shapes read as clutter no matter how tidy the contents are.</p>
+
+      <h2>The habit that matters</h2>
+      <p>Whatever you buy, give each item one home and reset the room once a week. A ten-minute reset on a Sunday keeps a small space livable in a way no product can.</p>
+    </div>
+  </div>
+  <div class="section tint">
+    <div class="wrap">
+      <div class="sec-head"><div><h2>Related articles</h2></div></div>
+      <div class="posts">
+        <a class="post" href="#a-college-essentials"><div class="tile p2"></div><div class="body"><span class="meta">Lifestyle</span><h3>15 Amazon college essentials you'll actually use</h3><p>The full move-in list.</p></div></a>
+        <a class="post" href="#a-cozy"><div class="tile p8"></div><div class="body"><span class="meta">Lifestyle</span><h3>10 cozy essentials for fall</h3><p>Making a small room feel warm.</p></div></a>
+        <a class="post" href="#a-beauty-college"><div class="tile p3"></div><div class="body"><span class="meta">Beauty</span><h3>10 beauty essentials every college girl needs</h3><p>Storing a routine in a shared bathroom.</p></div></a>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ===================== ABOUT ===================== -->
+<section class="page" id="about">
+  <div class="page-head">
+    <div class="narrow">
+      <h1 style="font-size:clamp(2.2rem,5vw,3.4rem)">About Pinvera</h1>
+      <p>A lifestyle discovery platform for women who want to shop less and find more.</p>
+    </div>
+  </div>
+  <div class="prose">
+    <div class="narrow">
+      <p>Pinvera helps women discover affordable fashion, beauty and lifestyle products, outfit inspiration and useful everyday finds. We're a small editorial team based in the United States, writing for readers who are building a wardrobe, setting up a first apartment or dorm room, or just trying to make everyday shopping take less time.</p>
+      <p>The internet has no shortage of product lists. What's harder to find is a list that tells you who a product is actually for — whether a sweater runs small, whether a storage bin will fit under a standard dorm bed, whether a skincare tool does what its marketing says. That's the gap we write into.</p>
+
+      <h2>How we choose what to feature</h2>
+      <p>Everything on Pinvera is selected by our editors. We prioritize products that are affordable, widely available and genuinely useful across more than one situation. Where we've used something ourselves, we say so. Where we're going on research and reader feedback, we say that too.</p>
+      <p>We don't publish exaggerated claims. You won't find "best product ever," guaranteed results, or countdown timers on this site. We also avoid quoting discount percentages, because prices on marketplaces change constantly and a struck-through price isn't always meaningful.</p>
+
+      <h2>How we make money</h2>
+      <p>Pinvera participates in affiliate programs, including the Amazon Associates program. When you buy through some of our links, we may earn a small commission at no additional cost to you. Commissions never determine what we recommend or how we rank it, and we've left products out of guides when we couldn't recommend them honestly.</p>
+      <p>Our full <a href="#affiliate" style="color:var(--rose-deep)">affiliate disclosure</a> explains this in more detail.</p>
+
+      <h2>What we cover</h2>
+      <ul>
+        <li>Fashion — outfit ideas, seasonal dressing, accessories and affordable finds</li>
+        <li>Beauty — skincare routines, makeup, tools and self-care</li>
+        <li>Lifestyle — college essentials, organization, small-space decor and everyday products</li>
+        <li>Seasonal finds — a rotating edit for fall, winter, spring and summer</li>
+      </ul>
+
+      <h2>A note on advice</h2>
+      <p>Our beauty and skincare content is general information, not medical advice. For persistent skin concerns, a dermatologist or your campus health center will help you more than any product we could recommend.</p>
+
+      <h2>Get in touch</h2>
+      <p>We read everything readers send us, and a good portion of what we cover comes from requests. Product suggestions, corrections and partnership enquiries are all welcome on our <a href="#contact" style="color:var(--rose-deep)">contact page</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section class="page" id="contact">
+  <div class="page-head">
+    <div class="narrow">
+      <h1 style="font-size:clamp(2.2rem,5vw,3.4rem)">Contact</h1>
+      <p>Questions, corrections, product suggestions or partnership enquiries — this reaches the editorial team directly.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="wrap contact-grid">
+      <form onsubmit="return false">
+        <label class="field"><span>Your name</span><input type="text" placeholder="First and last name"></label>
+        <label class="field"><span>Email address</span><input type="email" placeholder="you@email.com"></label>
+        <label class="field"><span>What's this about?</span>
+          <select>
+            <option>A product suggestion</option>
+            <option>A correction to an article</option>
+            <option>Partnership or press</option>
+            <option>Something else</option>
+          </select>
+        </label>
+        <label class="field"><span>Message</span><textarea placeholder="Tell us what you're looking for or what we got wrong."></textarea></label>
+        <button class="btn" type="submit">Send message</button>
+        <p class="fineprint">We use your details only to reply. Form submission is not yet connected — email us directly in the meantime.</p>
+      </form>
+      <div>
+        <div class="fact"><strong>General enquiries</strong><span>hello@pinvera.com</span></div>
+        <div class="fact"><strong>Partnerships and press</strong><span>partners@pinvera.com</span></div>
+        <div class="fact"><strong>Corrections</strong><span>corrections@pinvera.com — please include the article title.</span></div>
+        <div class="fact"><strong>Response time</strong><span>Usually two to three business days. We're a small team.</span></div>
+        <div class="fact"><strong>Pinterest</strong><span>Daily boards for outfits, beauty and room inspiration.</span></div>
+        <div style="margin-top:22px"><a class="btn ghost small" href="#">Follow on Pinterest</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== AFFILIATE DISCLOSURE ===================== -->
+<section class="page" id="affiliate">
+  <div class="page-head">
+    <div class="narrow">
+      <h1 style="font-size:clamp(2.2rem,5vw,3.4rem)">Affiliate disclosure</h1>
+      <p>How Pinvera earns money, in plain terms.</p>
+    </div>
+  </div>
+  <div class="prose">
+    <div class="narrow">
+      <p>Last updated: September 2026</p>
+      <p>Pinvera is a free site supported by affiliate partnerships. Some of the links on this site are affiliate links, which means that if you click one and make a purchase, we may receive a small commission from the retailer. The price you pay is exactly the same as it would be otherwise.</p>
+
+      <h2>Amazon Associates</h2>
+      <p>Pinvera is a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for sites to earn advertising fees by advertising and linking to Amazon.com. Amazon and the Amazon logo are trademarks of Amazon.com, Inc. or its affiliates. We may also participate in other retailer affiliate programs.</p>
+
+      <h2>How this affects our recommendations</h2>
+      <p>It doesn't determine them. Products are selected by our editors based on usefulness, price and availability. Commission rates vary between categories and retailers, and we don't take those rates into account when deciding what to feature or how to order a list. We regularly recommend inexpensive products that earn us very little, and we've left products out of guides when we couldn't recommend them in good conscience.</p>
+
+      <h2>What we won't do</h2>
+      <ul>
+        <li>Publish exaggerated claims, guaranteed results or "best ever" language</li>
+        <li>Advertise discounts or sale prices we haven't verified, or imply a deal is time-limited when it isn't</li>
+        <li>Present sponsored content as independent editorial without labelling it clearly</li>
+        <li>Recommend a product solely because it pays a higher commission</li>
+      </ul>
+
+      <h2>Prices and availability</h2>
+      <p>Prices, availability and product specifications change frequently and are accurate only at the time of publication. Always check the current details on the retailer's page before buying. Product appearance, packaging and formulation can also change without notice.</p>
+
+      <h2>Sponsored content</h2>
+      <p>If an article or placement is paid for by a brand, it will be clearly labelled as sponsored at the top of the page. We don't currently accept payment in exchange for a positive review.</p>
+
+      <h2>Questions</h2>
+      <p>If anything here is unclear, write to us at hello@pinvera.com and we'll explain it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PRIVACY ===================== -->
+<section class="page" id="privacy">
+  <div class="page-head">
+    <div class="narrow">
+      <h1 style="font-size:clamp(2.2rem,5vw,3.4rem)">Privacy policy</h1>
+      <p>What we collect, why, and what you can ask us to do with it.</p>
+    </div>
+  </div>
+  <div class="prose">
+    <div class="narrow">
+      <p>Last updated: September 2026</p>
+      <p>This policy is a general template and should be reviewed by a qualified professional before the site goes live, so that it reflects the analytics, email and advertising services you actually use.</p>
+
+      <h2>Information we collect</h2>
+      <ul>
+        <li><strong>Information you give us.</strong> Your email address if you subscribe to our newsletter, and the name, email and message content you send through our contact form.</li>
+        <li><strong>Information collected automatically.</strong> Standard analytics data such as pages visited, approximate location derived from IP address, referring site, browser and device type.</li>
+        <li><strong>Cookies.</strong> Small files used for site functionality, analytics and affiliate link tracking. Affiliate programs use cookies to attribute purchases to the site that referred them.</li>
+      </ul>
+
+      <h2>How we use it</h2>
+      <p>To send the newsletter you asked for, to reply to messages, to understand which articles readers find useful, and to receive credit for affiliate referrals. We don't sell your personal information.</p>
+
+      <h2>Third-party services</h2>
+      <p>We use third-party services for analytics, email delivery and affiliate tracking. These providers process data under their own privacy policies. Retailers you visit through our links — including Amazon — collect information independently once you leave this site, governed by their policies rather than ours.</p>
+
+      <h2>Your choices</h2>
+      <ul>
+        <li>Unsubscribe from the newsletter at any time using the link in any email.</li>
+        <li>Block or delete cookies through your browser settings. Some site features may work differently as a result.</li>
+        <li>Request a copy of the personal data we hold about you, or ask us to delete it, by emailing privacy@pinvera.com.</li>
+        <li>Residents of certain states and countries have additional rights under laws such as the CCPA and GDPR. We honour these requests regardless of where you live.</li>
+      </ul>
+
+      <h2>Children</h2>
+      <p>This site is intended for adults. We don't knowingly collect personal information from children under 13. If you believe a child has provided us with information, contact us and we'll delete it.</p>
+
+      <h2>Changes to this policy</h2>
+      <p>We'll update the date at the top of this page whenever this policy changes. Material changes will be noted in the newsletter.</p>
+
+      <h2>Contact</h2>
+      <p>Questions about privacy can go to privacy@pinvera.com.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="#home" style="font-size:1.25rem">PIN<span>vera</span></a>
+        <p style="color:var(--ink-soft);font-size:.92rem;margin-top:14px;max-width:32ch">Affordable fashion, beauty and lifestyle finds, chosen and written about by our editors.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#fashion">Fashion</a></li>
+          <li><a href="#beauty">Beauty</a></li>
+          <li><a href="#lifestyle">Lifestyle</a></li>
+          <li><a href="#seasonal">Seasonal finds</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Read</h4>
+        <ul>
+          <li><a href="#articles">All articles</a></li>
+          <li><a href="#a-fall-outfits">Fall outfit ideas</a></li>
+          <li><a href="#a-college-essentials">College essentials</a></li>
+          <li><a href="#a-cozy">Cozy fall picks</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Pinvera</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#affiliate">Affiliate disclosure</a></li>
+          <li><a href="#privacy">Privacy policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-note">
+      <span>© 2026 Pinvera. All rights reserved.</span>
+      <span>As an Amazon Associate we earn from qualifying purchases.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -126,14 +126,14 @@ body:not(:has(.page:target)) #home{display:block}
   font-family:var(--serif);font-size:.62rem;letter-spacing:.3em;
   color:rgba(255,255,255,.72);text-transform:uppercase;
 }
-.p1{background:linear-gradient(150deg,#EFE0D6 0%,#D9BDB2 100%)}
-.p2{background:linear-gradient(160deg,#E9E3D8 0%,#C8BCA9 100%)}
-.p3{background:linear-gradient(140deg,#F2E2E1 0%,#C9A0A3 100%)}
-.p4{background:linear-gradient(155deg,#E4E6DF 0%,#B4B9AC 100%)}
-.p5{background:linear-gradient(145deg,#F4EBE2 0%,#D3B79C 100%)}
-.p6{background:linear-gradient(165deg,#EDE1E9 0%,#B79EAE 100%)}
-.p7{background:linear-gradient(150deg,#E8DED2 0%,#BBA48C 100%)}
-.p8{background:linear-gradient(135deg,#F6EFE6 0%,#CBB6B0 100%)}
+.p1{background-image:linear-gradient(rgba(30,24,22,.08),rgba(30,24,22,.08)),url("https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=1400&q=85");background-size:cover;background-position:center}
+.p2{background-image:linear-gradient(rgba(30,24,22,.08),rgba(30,24,22,.08)),url("https://images.unsplash.com/photo-1536735971970-d1cb093842dc?auto=format&fit=crop&w=1400&q=85");background-size:cover;background-position:center}
+.p3{background-image:linear-gradient(rgba(30,24,22,.06),rgba(30,24,22,.06)),url("https://images.unsplash.com/photo-1741896136288-b04426b65558?auto=format&fit=crop&w=1400&q=85");background-size:cover;background-position:center}
+.p4{background-image:linear-gradient(rgba(30,24,22,.06),rgba(30,24,22,.06)),url("https://images.unsplash.com/photo-1755528871659-80a0e556a687?auto=format&fit=crop&w=1400&q=85");background-size:cover;background-position:center}
+.p5{background-image:linear-gradient(rgba(30,24,22,.06),rgba(30,24,22,.06)),url("https://images.unsplash.com/photo-1758548556741-3aafad028b25?auto=format&fit=crop&w=1400&q=85");background-size:cover;background-position:center}
+.p6{background-image:linear-gradient(rgba(30,24,22,.06),rgba(30,24,22,.06)),url("https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=1400&q=85");background-size:cover;background-position:center}
+.p7{background-image:linear-gradient(rgba(30,24,22,.05),rgba(30,24,22,.05)),url("https://images.unsplash.com/photo-1536735971970-d1cb093842dc?auto=format&fit=crop&w=1400&q=85");background-size:cover;background-position:center}
+.p8{background-image:linear-gradient(rgba(30,24,22,.05),rgba(30,24,22,.05)),url("https://images.unsplash.com/photo-1755528871659-80a0e556a687?auto=format&fit=crop&w=1400&q=85");background-size:cover;background-position:center}
 
 /* ============ sections ============ */
 .section{padding:clamp(52px,7vw,88px) 0}
@@ -1620,6 +1620,32 @@ body:not(:has(.page:target)) #home{display:block}
   As an Amazon Associate I earn from qualifying purchases.
 </p>
 </footer>
+
+
+<script>
+/* ===================== AFFILIATE SETUP =====================
+   Replace YOURSTOREID-20 with the Store ID shown in your Amazon
+   Associates US account. Then use amazonLink("search terms") for
+   product-search buttons. Do not put your personal Amazon login
+   details in this file.
+*/
+const AMAZON_ASSOCIATE_TAG = "YOURSTOREID-20";
+function amazonLink(searchTerms) {
+  return "https://www.amazon.com/s?k=" + encodeURIComponent(searchTerms)
+       + "&tag=" + encodeURIComponent(AMAZON_ASSOCIATE_TAG);
+}
+
+/* Add the tag to Amazon buttons once your Store ID is known.
+   Buttons that still use href="#" are intentionally left unchanged
+   until you choose the exact products/search terms. */
+document.querySelectorAll('a.shop').forEach((link) => {
+  if (link.dataset.amazonSearch) {
+    link.href = amazonLink(link.dataset.amazonSearch);
+    link.target = "_blank";
+    link.rel = "nofollow sponsored noopener";
+  }
+});
+</script>
 
 </body>
 </html>

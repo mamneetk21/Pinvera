@@ -1645,6 +1645,7 @@ document.querySelectorAll('a.shop').forEach((link) => {
     link.rel = "nofollow sponsored noopener";
   }
 });
+
 </script>
 
 </body>

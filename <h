@@ -428,35 +428,35 @@ body:not(:has(.page:target)) #home{display:block}
         <article class="find"><div class="tile p1 h1"></div><div class="body">
           <span class="kicker">Wardrobe</span><h3>Ribbed knit midi dress</h3>
           <p>Works with sneakers on campus and boots at dinner. Look for a heavier rib — thin ones cling in ways most people don't want.</p>
-          <a class="shop" href="#">Shop the find</a></div></article>
+          <a class="shop" href="#" data-amazon-search="cream sweater women fall">Shop the find</a></div></article>
         <article class="find"><div class="tile p3 h2"></div><div class="body">
           <span class="kicker">Skincare</span><h3>Silk-blend pillowcase</h3>
           <p>Less friction on hair overnight. A small change, but one of the few we've found genuinely noticeable within a week.</p>
-          <a class="shop" href="#">Shop the find</a></div></article>
+          <a class="shop" href="#" data-amazon-search="straight leg jeans women">Shop the find</a></div></article>
         <article class="find"><div class="tile p2 h3"></div><div class="body">
           <span class="kicker">Dorm</span><h3>Stackable drawer organizers</h3>
           <p>Measure your desk before ordering. Clear sides help more than you'd expect when everything lives in one small room.</p>
-          <a class="shop" href="#">Shop the find</a></div></article>
+          <a class="shop" href="#" data-amazon-search="brown ankle boots women">Shop the find</a></div></article>
         <article class="find"><div class="tile p6 h2"></div><div class="body">
           <span class="kicker">Accessories</span><h3>Gold-tone layered necklace</h3>
           <p>Pre-layered so the chains don't tangle. Check that it's tarnish-resistant if you'll wear it daily.</p>
-          <a class="shop" href="#">Shop the find</a></div></article>
+          <a class="shop" href="#" data-amazon-search="plaid shacket women fall">Shop the find</a></div></article>
         <article class="find"><div class="tile p5 h4"></div><div class="body">
           <span class="kicker">Fall</span><h3>Oversized scarf in oatmeal</h3>
           <p>Big enough to double as a blanket on a cold lecture hall morning. Neutral shades stretch across more outfits.</p>
-          <a class="shop" href="#">Shop the find</a></div></article>
+          <a class="shop" href="#" data-amazon-search="black tank top women">Shop the find</a></div></article>
         <article class="find"><div class="tile p4 h1"></div><div class="body">
           <span class="kicker">Everyday</span><h3>Insulated 32oz tumbler</h3>
           <p>Fits most car holders and backpack pockets. Worth choosing one with a straw lid and a sealed lid in the box.</p>
-          <a class="shop" href="#">Shop the find</a></div></article>
+          <a class="shop" href="#" data-amazon-search="denim jacket women">Shop the find</a></div></article>
         <article class="find"><div class="tile p8 h2"></div><div class="body">
           <span class="kicker">Beauty</span><h3>Heatless curling set</h3>
           <p>Better for hair than daily heat styling. Takes practice — expect two or three tries before it looks right.</p>
-          <a class="shop" href="#">Shop the find</a></div></article>
+          <a class="shop" href="#" data-amazon-search="rust midi dress women">Shop the find</a></div></article>
         <article class="find"><div class="tile p7 h4"></div><div class="body">
           <span class="kicker">Room</span><h3>Warm-toned clip lamp</h3>
           <p>Clips to a bed frame or shelf when there's no space for a table lamp. Pick 2700K bulbs for a softer room.</p>
-          <a class="shop" href="#">Shop the find</a></div></article>
+          <a class="shop" href="#" data-amazon-search="oversized knit sweater women">Shop the find</a></div></article>
       </div>
     </div>
   </div>
@@ -546,19 +546,19 @@ body:not(:has(.page:target)) #home{display:block}
         <article class="find"><div class="tile p2 h2"></div><div class="body">
           <span class="kicker">Storage</span><h3>Under-bed rolling bins</h3>
           <p>Check bed height first. Low frames need bins under six inches, which rules out most of the popular ones.</p>
-          <a class="shop" href="#">Shop the find</a></div></article>
+          <a class="shop" href="#" data-amazon-search="black leggings women">Shop the find</a></div></article>
         <article class="find"><div class="tile p7 h1"></div><div class="body">
           <span class="kicker">Study</span><h3>Foldable laptop stand</h3>
           <p>Raises your screen to eye level, which makes long library sessions easier on your neck. Aluminum holds up better than plastic.</p>
-          <a class="shop" href="#">Shop the find</a></div></article>
+          <a class="shop" href="#" data-amazon-search="tall boots women fall">Shop the find</a></div></article>
         <article class="find"><div class="tile p4 h2"></div><div class="body">
           <span class="kicker">Laundry</span><h3>Collapsible hamper with straps</h3>
           <p>Backpack straps matter if the machines are two floors down. Mesh panels keep it from smelling.</p>
-          <a class="shop" href="#">Shop the find</a></div></article>
+          <a class="shop" href="#" data-amazon-search="women's overalls">Shop the find</a></div></article>
         <article class="find"><div class="tile p8 h3"></div><div class="body">
           <span class="kicker">Decor</span><h3>Warm-white string lights</h3>
           <p>Choose battery or USB — many dorms don't allow extension cords. Warm white reads cozier than cool white.</p>
-          <a class="shop" href="#">Shop the find</a></div></article>
+          <a class="shop" href="#" data-amazon-search="striped long sleeve shirt women">Shop the find</a></div></article>
         <article class="find"><div class="tile p5 h2"></div><div class="body">
           <span class="kicker">Desk</span><h3>Small cordless vacuum</h3>
           <p>Handles crumbs and a rug in one room without storage headaches. Look for a washable filter.</p>
@@ -1629,7 +1629,7 @@ body:not(:has(.page:target)) #home{display:block}
    product-search buttons. Do not put your personal Amazon login
    details in this file.
 */
-const AMAZON_ASSOCIATE_TAG = "YOURSTOREID-20";
+const AMAZON_ASSOCIATE_TAG = "pinvera1903-20";
 function amazonLink(searchTerms) {
   return "https://www.amazon.com/s?k=" + encodeURIComponent(searchTerms)
        + "&tag=" + encodeURIComponent(AMAZON_ASSOCIATE_TAG);
@@ -1638,14 +1638,11 @@ function amazonLink(searchTerms) {
 /* Add the tag to Amazon buttons once your Store ID is known.
    Buttons that still use href="#" are intentionally left unchanged
    until you choose the exact products/search terms. */
-document.querySelectorAll('a.shop').forEach((link) => {
-  if (link.dataset.amazonSearch) {
-    link.href = amazonLink(link.dataset.amazonSearch);
-    link.target = "_blank";
-    link.rel = "nofollow sponsored noopener";
-  }
+document.querySelectorAll('a.shop[data-amazon-search]').forEach((link) => {
+  link.href = amazonLink(link.dataset.amazonSearch);
+  link.target = "_blank";
+  link.rel = "nofollow sponsored noopener";
 });
-
 </script>
 
 </body>
